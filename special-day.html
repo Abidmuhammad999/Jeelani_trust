@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Islamic Special Day</title>
+  <script>
+  function goToHome() {
+    localStorage.setItem('specialShownTime', new Date().getTime());
+    window.location.href = "index.html";
+  }
+
+  // Auto redirect after 30 seconds
+  setTimeout(goToHome, 30000);
+
+
+
+
+
+
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+    body {
+      font-family: 'Amiri', serif;
+      background-image: url('https://i.imgur.com/ZYdXJjJ.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .islamic-pattern {
+      background-image: url('https://i.imgur.com/DXZqQyP.png');
+      background-size: 300px;
+      opacity: 0.1;
+    }
+  </style>
+</head>
+<body class="bg-navy-900 text-white flex items-center justify-center h-screen p-4">
+  <div class="islamic-pattern absolute inset-0 pointer-events-none"></div>
+  <div class="bg-white text-navy-900 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center relative z-10">
+    
+    <!-- X Button -->
+    <button onclick="goToHome()" class="absolute top-4 right-4 text-navy-600 hover:text-navy-900 text-2xl font-bold">
+      &times;
+    </button>
+
+    <h1 class="text-3xl font-bold mb-2 text-navy-900">Lorem, ipsum dolor.</h1>
+    <p class="text-xl mb-1 text-navy-700">Lorem, ipsum.</p>
+    <p class="mb-6 text-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque, adipisci.</p>
+    
+  </div>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#f0f4ff',
+              100: '#e0e9ff',
+              200: '#c7d7fe',
+              300: '#a5b8fc',
+              400: '#8191f8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#0a1f44',
+            },
+            gold: {
+              500: '#d4af37'
+            }
+          },
+          fontFamily: {
+            'amiri': ['Amiri', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

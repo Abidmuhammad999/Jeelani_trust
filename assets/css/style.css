@@ -1,0 +1,253 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+.top-bar {
+    background-color: #f5f5f5;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.language-selector a {
+    margin-left: 10px;
+    color: #666;
+}
+
+.header-main {
+    background-color: white;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    height: 60px;
+}
+
+.search-box {
+    margin-left: auto;
+    display: flex;
+}
+
+.search-box input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-right: none;
+    width: 200px;
+}
+
+.search-box button {
+    background-color: #009edb;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* Navigation */
+.main-nav {
+    background-color: #0079b5;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+.main-nav a {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 15px 20px;
+    display: block;
+}
+
+.main-nav a:hover {
+    background-color: #006494;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: #009edb;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #009edb;
+    color: #009edb;
+}
+
+/* Section Styles */
+.section {
+    padding: 60px 0;
+}
+
+.section-title {
+    color: #0079b5;
+    border-bottom: 2px solid #0079b5;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.section-subtitle {
+    color: #0079b5;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #f5f5f5;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #0079b5;
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    height: 200px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.card-date {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer h3 {
+    color: #009edb;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+    }
+    
+    .search-box input {
+        width: 150px;
+    }
+}
