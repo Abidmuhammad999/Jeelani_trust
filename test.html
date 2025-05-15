@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extended Animation & UI Libraries Demo</title>
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Hover.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  <!-- Notyf -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
+  <!-- Tippy.js -->
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light.css" />
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .box { width: 100px; height: 100px; background: coral; margin: 20px auto; }
+    .section { margin-bottom: 50px; }
+    .counter { font-size: 2rem; font-weight: bold; }
+    #lottie { width: 200px; height: 200px; margin: auto; }
+  </style>
+</head>
+<body>
+  <h1 class="animate__animated animate__bounce">Animation Libraries Demo</h1>
+
+  <div class="section" data-aos="fade-up">
+    <h2>AOS Animation</h2>
+    <div class="box"></div>
+  </div>
+
+  <div class="section">
+    <h2>Hover.css</h2>
+    <button class="hvr-grow">Hover Me</button>
+  </div>
+
+  <div class="section">
+    <h2>Typed.js</h2>
+    <span id="typed"></span>
+  </div>
+
+  <div class="section">
+    <h2>GSAP Animation</h2>
+    <button id="gsap-btn">Animate Box</button>
+  </div>
+
+  <div class="section">
+    <h2>Toastr & Notyf</h2>
+    <button onclick="toastr.success('Hello from Toastr!')">Show Toastr</button>
+    <button id="notyf-btn">Show Notyf</button>
+  </div>
+
+  <div class="section">
+    <h2>Particles.js</h2>
+    <div id="particles-js" style="width:100%;height:300px;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Anime.js Animation</h2>
+    <button id="anime-btn">Run Anime</button>
+  </div>
+
+  <div class="section">
+    <h2>ScrollReveal</h2>
+    <div class="box sr-item" style="background: seagreen;"></div>
+  </div>
+
+  <div class="section">
+    <h2>Lottie Animation</h2>
+    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json" background="transparent" speed="1" style="width: 200px; height: 200px; margin: auto;" loop autoplay></lottie-player>
+  </div>
+
+  <div class="section">
+    <h2>Tippy.js Tooltip</h2>
+    <button id="tooltip-btn">Hover for Tip</button>
+  </div>
+
+  <div class="section">
+    <h2>CountUp.js Counter</h2>
+    <div id="counter" class="counter">0</div>
+    <button id="countup-btn">Start Counting</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init();
+
+      new Typed("#typed", {
+        strings: ["Hello, World!", "This is Typed.js"],
+        typeSpeed: 60,
+        loop: true
+      });
+
+      const notyf = new Notyf();
+      document.getElementById("notyf-btn").addEventListener("click", () => notyf.success("Hello from Notyf!"));
+
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 50 },
+          color: { value: "#ff0000" },
+          shape: { type: "circle" },
+          size: { value: 4 },
+          line_linked: { enable: true, distance: 150, color: "#ff0000" },
+          move: { enable: true, speed: 2 }
+        }
+      });
+
+      document.getElementById("gsap-btn").addEventListener("click", function() {
+        gsap.to(".box", { x: 200, duration: 1 });
+      });
+
+      document.getElementById("anime-btn").addEventListener("click", function () {
+        anime({
+          targets: '.box',
+          translateX: 250,
+          rotate: '1turn',
+          duration: 800
+        });
+      });
+
+      ScrollReveal().reveal('.sr-item', { delay: 300 });
+
+      tippy('#tooltip-btn', {
+        content: 'This is a tooltip!',
+        theme: 'light'
+      });
+
+      const counter = new CountUp('counter', 1000);
+      document.getElementById("countup-btn").addEventListener("click", () => {
+        if (!counter.error) {
+          counter.start();
+        } else {
+          console.error(counter.error);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
