@@ -102,3 +102,41 @@ html {
     #mobile-menu {
       transition: all 0.3s ease-out;
     }
+
+        .hidden { display: none; }
+    .transition-all { transition: all 0.3s ease; }
+    .scale-95 { transform: scale(0.95); }
+    .opacity-0 { opacity: 0; }
+    .ring-2 { border: 2px solid; }
+    .ring-amber-400 { border-color: #fbbf24; }
+    .text-amber-600 { color: #d97706; }
+    .text-amber-500 { color: #f59e0b; }
+    .bg-gray-200 { background: #e5e7eb; }
+    .bg-amber-500 { background: #f59e0b; }
+    .rounded { border-radius: 0.25rem; }
+    .animate-pulse { animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    #swalath-box {
+      position: relative;
+      max-width: 400px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #swalath-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+    }
