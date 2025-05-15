@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jeelani Trust is dedicated to community development through education, healthcare, and empowerment programs.">
+  <meta name="description"
+    content="Jeelani Trust is dedicated to community development through education, healthcare, and empowerment programs.">
   <meta name="keywords" content="Jeelani Trust, charity, community development, education, healthcare, empowerment">
   <meta name="author" content="Jeelani Trust">
   <title>Home | Jeelani Trust</title>
@@ -16,19 +18,44 @@
       --navy-lighter: #2a4f8a;
       --gold: #d4af37;
     }
-    .bg-navy { background-color: var(--navy); }
-    .bg-navy-light { background-color: var(--navy-light); }
-    .text-navy-light { color: var(--navy-lighter); }
-    .text-navy { color: var(--navy); }
-    .text-gold { color: var(--gold); }
-    .border-navy { border-color: var(--navy); }
-    .border-gold { border-color: var(--gold); }
-    .hover\:bg-navy:hover { background-color: var(--navy-light); }
+
+    .bg-navy {
+      background-color: var(--navy);
+    }
+
+    .bg-navy-light {
+      background-color: var(--navy-light);
+    }
+
+    .text-navy-light {
+      color: var(--navy-lighter);
+    }
+
+    .text-navy {
+      color: var(--navy);
+    }
+
+    .text-gold {
+      color: var(--gold);
+    }
+
+    .border-navy {
+      border-color: var(--navy);
+    }
+
+    .border-gold {
+      border-color: var(--gold);
+    }
+
+    .hover\:bg-navy:hover {
+      background-color: var(--navy-light);
+    }
 
     .program-card {
       transition: all 0.3s ease;
       border: 1px solid #e5e7eb;
     }
+
     .program-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 15px -3px rgba(10, 31, 68, 0.2);
@@ -44,6 +71,7 @@
       font-weight: 500;
       border: 1px solid var(--navy);
     }
+
     .btn-navy:hover {
       background-color: var(--navy-light);
       transform: translateY(-2px);
@@ -58,6 +86,7 @@
       font-weight: 500;
       border: 1px solid var(--navy);
     }
+
     .btn-outline-navy:hover {
       background-color: var(--navy);
       color: white;
@@ -67,6 +96,7 @@
       position: relative;
       padding-bottom: 4px;
     }
+
     .nav-link:after {
       content: '';
       position: absolute;
@@ -77,9 +107,11 @@
       background-color: var(--gold);
       transition: width 0.3s ease;
     }
+
     .nav-link:hover:after {
       width: 100%;
     }
+
     .nav-link.active:after {
       width: 100%;
       background-color: white;
@@ -88,12 +120,14 @@
     .card-hover {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card-hover:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 25px -5px rgba(10, 31, 68, 0.3);
     }
   </style>
 </head>
+
 <body class="bg-gray-50 font-sans">
 
   <!-- Navbar -->
@@ -102,7 +136,9 @@
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-3">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gold" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+              clip-rule="evenodd" />
           </svg>
           <a href="single page.html" class="font-bold text-2xl ">Jeelani Trust </a>
         </div>
@@ -113,7 +149,8 @@
           <a href="gallery.html" class="nav-link hover:text-gray-200">Gallery</a>
           <a href="contact.html" class="nav-link hover:text-gray-200">Contact</a>
         </div>
-        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" id="menu-toggle">
+        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false"
+          id="menu-toggle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -141,7 +178,8 @@
   <section class="relative  from-navy to-navy-light text-navy py-20 px-4">
     <div class="max-w-7xl mx-auto text-center">
       <h1 class="text-2xl md:text-3xl font-bold mb-4">Welcome to Jeelani Trust</h1>
-      <p class="text-lg md:text-xl max-w-xl mx-auto mb-8">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, aut.</p>
+      <p class="text-lg md:text-xl max-w-xl mx-auto mb-8">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        Quis, aut.</p>
       <!-- <a href="programme.html" class="btn-navy inline-block">Discover Our Programs</a> -->
     </div>
   </section>
@@ -152,22 +190,26 @@
       <h2 class="text-3xl md:text-4xl font-bold text-navy">Our Leadership</h2>
       <p class="text-gray-600 max-w-2xl mx-auto mt-4">Meet the visionaries driving Jeelani Trust’s mission of service and empowerment.</p>
     </div> -->
-    <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-2">
-      <!-- Founding Chairman -->
-      <article class="bg-white rounded-2xl shadow-lg card-hover p-8 text-center">
-        <img src="assets/images/dummy-image-square.jpg" loading="lazy" alt="Photo of Founding Chairman" class="rounded-lg w-40 h-40 mx-auto object-cover shadow border-2 border-gold">
-        <h3 class="mt-6 text-xl font-semibold text-gray-800">Lorem ipsum dolor sit amet.</h3>
-        <p class="text-gold font-medium mb-4">Lorem, ipsum dolor.</p>
-        <p class="text-gray-600 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quia inventore accusamus..</p>
-      </article>
-      <!-- Current Chairman -->
-      <article class="bg-white rounded-2xl shadow-lg card-hover p-8 text-center">
-        <img src="assets/images/dummy-image-square.jpg" loading="lazy" alt="Photo of Current Chairman" class="rounded-lg w-40 h-40 mx-auto object-cover shadow border-2 border-gold">
-        <h3 class="mt-6 text-xl font-semibold text-gray-800">Lorem, ipsum dolor.</h3>
-        <p class="text-gold font-medium mb-4">Lorem ipsum dolor sit.</p>
-        <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ducimus consectetur veniam.</p>
-      </article>
-    </div>
+  <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-2">
+    <!-- Founding Chairman -->
+    <article class="bg-white rounded-2xl shadow-lg card-hover p-8 text-center">
+      <img src="assets/images/dummy-image-square.jpg" loading="lazy" alt="Photo of Founding Chairman"
+        class="rounded-lg w-40 h-40 mx-auto object-cover shadow border-2 border-gold">
+      <h3 class="mt-6 text-xl font-semibold text-gray-800">Lorem ipsum dolor sit amet.</h3>
+      <p class="text-gold font-medium mb-4">Lorem, ipsum dolor.</p>
+      <p class="text-gray-600 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quia inventore
+        accusamus..</p>
+    </article>
+    <!-- Current Chairman -->
+    <article class="bg-white rounded-2xl shadow-lg card-hover p-8 text-center">
+      <img src="assets/images/dummy-image-square.jpg" loading="lazy" alt="Photo of Current Chairman"
+        class="rounded-lg w-40 h-40 mx-auto object-cover shadow border-2 border-gold">
+      <h3 class="mt-6 text-xl font-semibold text-gray-800">Lorem, ipsum dolor.</h3>
+      <p class="text-gold font-medium mb-4">Lorem ipsum dolor sit.</p>
+      <p class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ducimus consectetur
+        veniam.</p>
+    </article>
+  </div>
   </section>
 
   <!-- Footer -->
@@ -177,25 +219,33 @@
         <div>
           <div class="flex items-center space-x-3 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gold" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+              <path fill-rule="evenodd"
+                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                clip-rule="evenodd" />
             </svg>
             <span class="font-bold text-2xl text-white">Jeelani Trust</span>
           </div>
-          <p class="text-gray-300 text-sm mb-4">Committed to creating positive change through sustainable community development programs.</p>
+          <p class="text-gray-300 text-sm mb-4">Committed to creating positive change through sustainable community
+            development programs.</p>
           <div class="flex space-x-4">
             <a href="https://x.com/jeelanitrust" class="text-gray-300 hover:text-gold" aria-label="Follow us on X">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zM16.845 20.31h2.045L7.747 3.69H5.629l11.216 16.62z"/>
+                <path
+                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zM16.845 20.31h2.045L7.747 3.69H5.629l11.216 16.62z" />
               </svg>
             </a>
-            <a href="https://instagram.com/jeelanitrust" class="text-gray-300 hover:text-gold" aria-label="Follow us on Instagram">
+            <a href="https://instagram.com/jeelanitrust" class="text-gray-300 hover:text-gold"
+              aria-label="Follow us on Instagram">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759               6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759               6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
               </svg>
             </a>
-            <a href="https://linkedin.com/company/jeelanitrust" class="text-gray-300 hover:text-gold" aria-label="Connect with us on LinkedIn">
+            <a href="https://linkedin.com/company/jeelanitrust" class="text-gray-300 hover:text-gold"
+              aria-label="Connect with us on LinkedIn">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
           </div>
@@ -225,20 +275,24 @@
           <address class="text-gray-300 text-sm not-italic space-y-3">
             <div class="flex items-start">
               <svg class="w-5 h-5 mr-2 mt-0.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <span>123 Trust Avenue, Hyderabad, Telangana, India</span>
             </div>
             <div class="flex items-center">
               <svg class="w-5 h-5 mr-2 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <a href="mailto:info@jeelanitrust.org" class="hover:text-white">info@jeelanitrust.org</a>
             </div>
             <div class="flex items-center">
               <svg class="w-5 h-5 mr-2 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <a href="tel:+914012345678" class="hover:text-white">+91 40 1234 5678</a>
             </div>
@@ -246,7 +300,9 @@
         </div>
       </div>
       <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400 text-sm">
-        <p>© 2025 Jeelani Trust. All Rights Reserved. | <a href="privacy.html" class="hover:text-white hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:text-white hover:underline">Terms of Service</a></p>
+        <p>© 2025 Jeelani Trust. All Rights Reserved. | <a href="privacy.html"
+            class="hover:text-white hover:underline">Privacy Policy</a> | <a href="terms.html"
+            class="hover:text-white hover:underline">Terms of Service</a></p>
       </div>
     </div>
   </footer>
@@ -277,13 +333,14 @@
       const hijriDate = document.getElementById('hijri-date');
       hijriDate.textContent = '15 Ramadan 1446 AH'; // Replace with actual Hijri date logic
     });
-   const SIX_HOURS = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
-  const lastShown = localStorage.getItem('specialShownTime');
-  const now = new Date().getTime();
+    const SIX_HOURS = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+    const lastShown = localStorage.getItem('specialShownTime');
+    const now = new Date().getTime();
 
-  if (!lastShown || now - lastShown > SIX_HOURS) {
-    window.location.href = "special-day.html";
-  }
+    if (!lastShown || now - lastShown > SIX_HOURS) {
+      window.location.href = "special-day.html";
+    }
   </script>
 </body>
+
 </html>
