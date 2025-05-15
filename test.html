@@ -1,163 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extended Animation & UI Libraries Demo</title>
-
-  <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-  <!-- Hover.css -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
-
-  <!-- Toastr -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-  <!-- Notyf -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-
-  <!-- Tippy.js -->
-  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light.css" />
-
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    .box { width: 100px; height: 100px; background: coral; margin: 20px auto; }
-    .section { margin-bottom: 50px; }
-    .counter { font-size: 2rem; font-weight: bold; }
-    #lottie { width: 200px; height: 200px; margin: auto; }
-  </style>
+  <title>Hijri Date Anywhere</title>
 </head>
 <body>
-  <h1 class="animate__animated animate__bounce">Animation Libraries Demo</h1>
+  <h2>Display Hijri Date Anywhere 👇</h2>
+<div  class="font-medium"><span id="day">HD</span><span>HM</span><span>HY</span></div>
+  <p>Today is: <strong><span id="day"></span> <span id="month"></span>, <span id="year"></span> AH</strong></p>
 
-  <div class="section" data-aos="fade-up">
-    <h2>AOS Animation</h2>
-    <div class="box"></div>
-  </div>
+  <p>Just the Month: <strong><span id="monthOnly"></span></strong></p>
+  <p>Just the Year: <strong><span id="yearOnly"></span></strong></p>
 
-  <div class="section">
-    <h2>Hover.css</h2>
-    <button class="hvr-grow">Hover Me</button>
-  </div>
-
-  <div class="section">
-    <h2>Typed.js</h2>
-    <span id="typed"></span>
-  </div>
-
-  <div class="section">
-    <h2>GSAP Animation</h2>
-    <button id="gsap-btn">Animate Box</button>
-  </div>
-
-  <div class="section">
-    <h2>Toastr & Notyf</h2>
-    <button onclick="toastr.success('Hello from Toastr!')">Show Toastr</button>
-    <button id="notyf-btn">Show Notyf</button>
-  </div>
-
-  <div class="section">
-    <h2>Particles.js</h2>
-    <div id="particles-js" style="width:100%;height:300px;"></div>
-  </div>
-
-  <div class="section">
-    <h2>Anime.js Animation</h2>
-    <button id="anime-btn">Run Anime</button>
-  </div>
-
-  <div class="section">
-    <h2>ScrollReveal</h2>
-    <div class="box sr-item" style="background: seagreen;"></div>
-  </div>
-
-  <div class="section">
-    <h2>Lottie Animation</h2>
-    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json" background="transparent" speed="1" style="width: 200px; height: 200px; margin: auto;" loop autoplay></lottie-player>
-  </div>
-
-  <div class="section">
-    <h2>Tippy.js Tooltip</h2>
-    <button id="tooltip-btn">Hover for Tip</button>
-  </div>
-
-  <div class="section">
-    <h2>CountUp.js Counter</h2>
-    <div id="counter" class="counter">0</div>
-    <button id="countup-btn">Start Counting</button>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <script src="https://unpkg.com/tippy.js@6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.min.js"></script>
+  <!-- Optional output box -->
+  <div id="output" style="margin-top: 20px; color: gray;"></div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      AOS.init();
+    const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/1913_i-nVTrLxWGLTb8j_V7jXMhPs3ZAPZzuL5vA6rbw/export?format=csv&gid=0';
 
-      new Typed("#typed", {
-        strings: ["Hello, World!", "This is Typed.js"],
-        typeSpeed: 60,
-        loop: true
-      });
+    async function fetchHijriData() {
+      try {
+        const response = await fetch(sheetCSVUrl);
+        const csvText = await response.text();
 
-      const notyf = new Notyf();
-      document.getElementById("notyf-btn").addEventListener("click", () => notyf.success("Hello from Notyf!"));
+        const rows = csvText.trim().split('\n');
+        const row3 = rows[2]; // A3, B3, C3
 
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 50 },
-          color: { value: "#ff0000" },
-          shape: { type: "circle" },
-          size: { value: 4 },
-          line_linked: { enable: true, distance: 150, color: "#ff0000" },
-          move: { enable: true, speed: 2 }
+        if (!row3) {
+          document.getElementById('output').innerText = 'Row 3 not found.';
+          return;
         }
-      });
 
-      document.getElementById("gsap-btn").addEventListener("click", function() {
-        gsap.to(".box", { x: 200, duration: 1 });
-      });
+        const columns = row3.split(',');
 
-      document.getElementById("anime-btn").addEventListener("click", function () {
-        anime({
-          targets: '.box',
-          translateX: 250,
-          rotate: '1turn',
-          duration: 800
-        });
-      });
+        const hijriDay = columns[0]?.trim();   // A3
+        const hijriMonth = columns[1]?.trim(); // B3
+        const hijriYear = columns[2]?.trim();  // C3
 
-      ScrollReveal().reveal('.sr-item', { delay: 300 });
+        // 🟢 Assign to multiple elements
+        document.getElementById('day').textContent = hijriDay;
+        document.getElementById('month').textContent = hijriMonth;
+        document.getElementById('year').textContent = hijriYear;
 
-      tippy('#tooltip-btn', {
-        content: 'This is a tooltip!',
-        theme: 'light'
-      });
+        document.getElementById('monthOnly').textContent = hijriMonth;
+        document.getElementById('yearOnly').textContent = hijriYear;
 
-      const counter = new CountUp('counter', 1000);
-      document.getElementById("countup-btn").addEventListener("click", () => {
-        if (!counter.error) {
-          counter.start();
-        } else {
-          console.error(counter.error);
-        }
-      });
-    });
+        // Optional combined preview
+        document.getElementById('output').innerHTML = `A3: ${hijriDay} | B3: ${hijriMonth} | C3: ${hijriYear}`;
+
+      } catch (error) {
+        document.getElementById('output').innerText = 'Error loading data.';
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchHijriData();
   </script>
 </body>
 </html>

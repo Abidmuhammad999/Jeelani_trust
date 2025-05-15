@@ -174,7 +174,11 @@ html {
   <div class="bg-navy text-white text-xs md:text-sm">
     <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
       <div id="gregorian-date" class="font-medium">Loading...</div>
-      <div id="hijri-date" class="font-medium">Loading...</div>
+      <div class="font-medium">
+  <span id="day">HD</span>
+  <span id="month" class="text-gold">HM</span>
+  <span id="year">HY</span>
+</div>
     </div>
   </div>
 
@@ -670,26 +674,25 @@ html {
   </footer>
 
   <!-- JavaScript -->
+<!-- Main Site Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
+    // ========== MOBILE MENU TOGGLE ==========
     const menuButton = document.getElementById('menu-toggle');
     const menuClose = document.getElementById('menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Toggle menu visibility on menu button click
     menuButton.addEventListener('click', () => {
       mobileMenu.classList.remove('hidden');
       menuButton.setAttribute('aria-expanded', 'true');
     });
 
-    // Close menu on close button click
     menuClose.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
       menuButton.setAttribute('aria-expanded', 'false');
     });
 
-    // Close mobile menu when clicking on any link inside it
+    // Close menu on mobile nav link click
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -697,7 +700,7 @@ html {
       });
     });
 
-    // Gregorian Date
+    // ========== GREGORIAN DATE ==========
     const gregorianDate = document.getElementById('gregorian-date');
     const today = new Date();
     gregorianDate.textContent = today.toLocaleDateString('en-US', {
@@ -707,12 +710,12 @@ html {
       day: 'numeric',
     });
 
-    // Hijri Date Placeholder
+    // ========== HIJRI DATE PLACEHOLDER ==========
     const hijriDate = document.getElementById('hijri-date');
-    hijriDate.textContent = '15 Ramadan 1446 AH'; // TODO: Replace with real conversion logic
+    hijriDate.textContent = '15 Ramadan 1446 AH'; // Placeholder only; see fetchHijriData()
 
-    // Special Day Redirect Logic
-    const SIX_HOURS = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+    // ========== SPECIAL DAY REDIRECT ==========
+    const SIX_HOURS = 6 * 60 * 60 * 1000; // 6 hours
     const lastShown = localStorage.getItem('specialShownTime');
     const now = Date.now();
 
@@ -721,13 +724,13 @@ html {
       window.location.href = "special-day.html";
     }
 
-    // Intersection Observer for active link highlighting
+    // ========== ACTIVE SECTION HIGHLIGHT (ScrollSpy) ==========
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
 
-          // Update desktop nav links
+          // Desktop nav
           document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${id}`) {
@@ -735,7 +738,7 @@ html {
             }
           });
 
-          // Update mobile nav links
+          // Mobile nav
           document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.classList.remove('active', 'bg-white', 'bg-opacity-5', 'text-gold', 'border-l-4', 'border-gold');
             if (link.getAttribute('href') === `#${id}`) {
@@ -754,16 +757,69 @@ html {
       observer.observe(section);
     });
 
-    // Set initial active state for home section
+    // Set initial "home" active
     document.querySelector('.nav-link[href="#home"]').classList.add('active');
-    document.querySelector('.mobile-nav-link[href="#home"]').classList.add('active', 'bg-white', 'bg-opacity-5', 'text-gold', 'border-l-4', 'border-gold');
+    document.querySelector('.mobile-nav-link[href="#home"]').classList.add(
+      'active', 'bg-white', 'bg-opacity-5', 'text-gold', 'border-l-4', 'border-gold'
+    );
 
-    // Initialize AOS animation library
+    // ========== INIT AOS (Animate On Scroll) ==========
     if (typeof AOS !== 'undefined') {
       AOS.init();
     }
   });
 </script>
 
+<!-- Hijri Date from Google Sheet -->
+<script>
+  const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/1913_i-nVTrLxWGLTb8j_V7jXMhPs3ZAPZzuL5vA6rbw/export?format=csv&gid=0';
+
+  async function fetchHijriData() {
+    try {
+      const response = await fetch(sheetCSVUrl);
+      const csvText = await response.text();
+      const rows = csvText.trim().split('\n');
+      const row3 = rows[2]; // A3, B3, C3
+
+      if (!row3) {
+        document.getElementById('output').innerText = 'Row 3 not found.';
+        return;
+      }
+
+      const columns = row3.split(',');
+
+      const hijriDay = columns[0]?.trim();
+      const hijriMonth = columns[1]?.trim();
+      const hijriYear = columns[2]?.trim();
+
+      // Set individual date parts
+      document.getElementById('day').textContent = hijriDay;
+      document.getElementById('month').textContent = hijriMonth;
+      document.getElementById('year').textContent = hijriYear;
+
+      document.getElementById('monthOnly').textContent = hijriMonth;
+      document.getElementById('yearOnly').textContent = hijriYear;
+
+      // Debug/combined display
+      document.getElementById('output').innerHTML = `A3: ${hijriDay} | B3: ${hijriMonth} | C3: ${hijriYear}`;
+
+    } catch (error) {
+      document.getElementById('output').innerText = 'Error loading data.';
+      console.error('Error fetching Hijri data:', error);
+    }
+  }
+
+  // Fetch on load
+  fetchHijriData();
+  
+</script>
+<script>
+     if (typeof AOS !== 'undefined') {
+  AOS.init();
+} else {
+  console.error('AOS is not loaded.');
+}
+</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
