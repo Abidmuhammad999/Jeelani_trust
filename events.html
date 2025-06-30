@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Arabic Date Event Viewer</title>
+</head>
+<body>
+
+<h1>Today's Arabic Date Event</h1>
+<div id="todayEvent">Loading...</div>
+
+<h2>Next Upcoming Event</h2>
+<div id="nextEvent">Loading...</div>
+
+<script>
+const todayArabicDate_ddmmyyyy = '26 11 1446';
+
+function convertToComparableDate(ddmmyyyy) {
+  if (!ddmmyyyy) return null;
+  const parts = ddmmyyyy.trim().split(' ');
+  if(parts.length !== 3) return null;
+  const [dd, mm, yyyy] = parts;
+  if (!dd || !mm || !yyyy) return null;
+  const day = dd.padStart(2, '0');
+  const month = mm.padStart(2, '0');
+  return `${yyyy}-${month}-${day}`;
+}
+
+function parseCSV(csvText) {
+  const lines = csvText.trim().split('\n');
+  const header = lines[0].split('\t'); // TAB separated
+
+  const dateIndex = header.indexOf('Date');
+  const emojiIndex = header.indexOf('Emoji');
+  const textIndex = header.indexOf('Text');
+  const typeIndex = header.indexOf('Type');
+
+  const events = [];
+  for (let i = 1; i < lines.length; i++) {
+    const row = lines[i].split('\t'); // TAB separated
+    if (row.length >= 4) {
+      const rawDate = row[dateIndex] ? row[dateIndex].trim() : null;
+      if (!rawDate) continue;
+      const dateComparable = convertToComparableDate(rawDate);
+      if (!dateComparable) continue;
+      const emoji = row[emojiIndex] ? row[emojiIndex].trim() : '';
+      const text = row[textIndex] ? row[textIndex].trim() : '';
+      const type = row[typeIndex] ? row[typeIndex].trim() : '';
+
+      events.push({
+        originalDate: rawDate,
+        dateComparable,
+        emoji,
+        text,
+        type,
+      });
+    }
+  }
+  return events;
+}
+
+function isDateEqual(date1, date2) {
+  return date1 === date2;
+}
+
+function isDateAfter(date1, date2) {
+  return date1 > date2;
+}
+
+function findEvents(events, todayComparable) {
+  let todayEvent = null;
+  let nextEvent = null;
+
+  for (const ev of events) {
+    if (isDateEqual(ev.dateComparable, todayComparable)) {
+      todayEvent = ev;
+    } else if (isDateAfter(ev.dateComparable, todayComparable)) {
+      if (!nextEvent || isDateAfter(nextEvent.dateComparable, ev.dateComparable)) {
+        nextEvent = ev;
+      }
+    }
+  }
+
+  return { todayEvent, nextEvent };
+}
+
+function showEvent(elementId, event) {
+  const el = document.getElementById(elementId);
+  if (event) {
+    el.innerHTML = `${event.originalDate} ${event.emoji} - <b>${event.text}</b> [${event.type}]`;
+  } else {
+    el.textContent = 'No event found.';
+  }
+}
+
+// Test CSV data - your sample with tabs (\t)
+const sampleCSV = `Date\tEmoji\tText\tType
+26 11 1446\t🌙\tStart of Ramadan\tReligious
+10 09 1446\t📿\tFriday Prayer\tReligious
+15 09 1446\t🎉\tMid Ramadan Celebration\tCultural
+01 10 1446\t🕌\tEid al-Fitr\tReligious
+05 10 1446\t📚\tIslamic Study Day\tEducational`;
+
+const todayComparable = convertToComparableDate(todayArabicDate_ddmmyyyy);
+const events = parseCSV(sampleCSV);
+const { todayEvent, nextEvent } = findEvents(events, todayComparable);
+showEvent('todayEvent', todayEvent);
+showEvent('nextEvent', nextEvent);
+
+</script>
+
+</body>
+</html>

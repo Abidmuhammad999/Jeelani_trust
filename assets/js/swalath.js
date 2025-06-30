@@ -37,7 +37,7 @@
     const message = document.getElementById("swalath-message");
     const dateLine = document.getElementById("swalath-date");
 
-    if (daysLeft >= 0 && daysLeft <= 20) {
+    if (daysLeft >= 0 && daysLeft <= 5) {
       box.classList.remove("hidden");
 
       if (daysLeft === 0) {

@@ -92,40 +92,10 @@ if (gregorianDate) {
   }
 
   // Hijri Date from Google Sheet
-  fetchHijriData();
+
 });
 
-// Hijri Date Fetching Function
-const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/1913_i-nVTrLxWGLTb8j_V7jXMhPs3ZAPZzuL5vA6rbw/export?format=csv&gid=0';
 
-async function fetchHijriData() {
-  try {
-    const response = await fetch(sheetCSVUrl);
-    const csvText = await response.text();
-    const rows = csvText.trim().split('\n');
-    const row3 = rows[2]; // A3, B3, C3
-
-    if (!row3) {
-      document.getElementById('output').innerText = 'Row 3 not found.';
-      return;
-    }
-
-    const columns = row3.split(',');
-    const hijriDay = columns[0]?.trim();
-    const hijriMonth = columns[1]?.trim();
-    const hijriYear = columns[2]?.trim();
-
-    document.getElementById('day').textContent = hijriDay;
-    document.getElementById('month').textContent = hijriMonth;
-    document.getElementById('year').textContent = hijriYear;
-    document.getElementById('monthOnly').textContent = hijriMonth;
-    document.getElementById('yearOnly').textContent = hijriYear;
-    document.getElementById('output').innerHTML = `A3: ${hijriDay} | B3: ${hijriMonth} | C3: ${hijriYear}`;
-  } catch (error) {
-    document.getElementById('output').innerText = 'Error loading data.';
-    console.error('Error fetching Hijri data:', error);
-  }
-}
 
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");

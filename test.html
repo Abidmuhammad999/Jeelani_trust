@@ -2,135 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Swalath Countdown</title>
-  <style>
-    .hidden { display: none; }
-    .transition-all { transition: all 0.3s ease; }
-    .scale-95 { transform: scale(0.95); }
-    .opacity-0 { opacity: 0; }
-    .ring-2 { border: 2px solid; }
-    .ring-amber-400 { border-color: #fbbf24; }
-    .text-amber-600 { color: #d97706; }
-    .text-amber-500 { color: #f59e0b; }
-    .bg-gray-200 { background: #e5e7eb; }
-    .bg-amber-500 { background: #f59e0b; }
-    .rounded { border-radius: 0.25rem; }
-    .animate-pulse { animation: pulse 2s infinite; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    #swalath-box {
-      position: relative;
-      max-width: 400px;
-      margin: 1rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    #swalath-close {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-    }
-  </style>
+  <title>Hijri Special Day Reminder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-sky-100 to-blue-200 min-h-screen flex items-center justify-center">
 
-  <div id="swalath-box" class="hidden transition-all duration-300">
-    <button id="swalath-close">❌</button>
-    <div id="swalath-message" class="mb-2 font-bold text-lg"></div>
-    <div id="swalath-date" class="mb-3 text-sm text-gray-600"></div>
-    <div class="w-full bg-gray-200 h-2 rounded">
-      <div id="swalath-progress" class="bg-amber-500 h-2 rounded transition-all duration-500" style="width: 0%"></div>
+  <!-- 🔔 NOTIFICATION BANNER -->
+  <div id="countdownBanner" class="hidden fixed top-0 inset-x-0 bg-yellow-100 text-yellow-800 text-sm font-medium py-2 text-center shadow-md z-40">
+    <span id="countdownText"></span>
+  </div>
+
+  <!-- 📅 MAIN CARD -->
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md text-center space-y-4 mt-12">
+    <h2 class="text-2xl font-bold text-blue-700">📅 Hijri Date</h2>
+
+    <div class="flex justify-around text-gray-700 font-medium text-lg">
+      <div><span class="font-semibold text-blue-600">Day:</span> <span id="day">--</span></div>
+      <div><span class="font-semibold text-blue-600">Month:</span> <span id="month">--</span></div>
+      <div><span class="font-semibold text-blue-600">Year:</span> <span id="year">--</span></div>
+    </div>
+
+    <div id="output" class="text-xs text-gray-600 mt-2 whitespace-pre-line"></div>
+  </div>
+
+  <!-- 🎉 ALERT BOX POPUP -->
+  <div id="alertBox" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white shadow-xl rounded-xl w-11/12 max-w-md p-5 border-l-4 border-green-600 relative animate-bounce-in">
+      <button onclick="closeAlert()" class="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+      <div class="text-lg font-semibold text-green-700 flex items-center gap-2">
+        <span>🎉 Special Day Reminder</span>
+      </div>
+      <div id="alertMessage" class="mt-2 text-gray-700 text-sm leading-relaxed"></div>
     </div>
   </div>
 
   <script>
-    function getFirstSunday(year, month) {
-      let date = new Date(year, month, 1);
-      while (date.getDay() !== 0) {
-        date.setDate(date.getDate() + 1);
-      }
-      return date;
-    }
-
-    function formatDate(date) {
-      return date.toLocaleDateString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-    }
-
-    function showSwalathCountdown() {
-      const today = new Date();
-      let year = today.getFullYear();
-      let month = today.getMonth();
-
-      let swalathDate = getFirstSunday(year, month);
-
-      if (today > swalathDate) {
-        month += 1;
-        if (month > 11) {
-          month = 0;
-          year += 1;
-        }
-        swalathDate = getFirstSunday(year, month);
-      }
-
-      const daysLeft = Math.ceil((swalathDate - today) / (1000 * 60 * 60 * 24));
-      const totalDays = Math.ceil((swalathDate - new Date(year, month, 1)) / (1000 * 60 * 60 * 24));
-      const progressPercent = ((totalDays - daysLeft) / totalDays) * 100;
-
-      const box = document.getElementById("swalath-box");
-      const message = document.getElementById("swalath-message");
-      const dateLine = document.getElementById("swalath-date");
-      const progressBar = document.getElementById("swalath-progress");
-
-      if (daysLeft >= 0 && daysLeft <= 16) {
-        box.classList.remove("hidden");
-        progressBar.style.width = `${progressPercent}%`;
-
-        if (daysLeft === 0) {
-          message.innerHTML = "✨ <span class='animate-pulse'>Today is Swalath!</span> ✨";
-          box.classList.add("ring-2", "ring-amber-400");
-        } else {
-          message.innerHTML = `${daysLeft} day${daysLeft > 1 ? "s" : ""} <span class='text-amber-600'>until Swalath</span>`;
-        }
-
-        dateLine.innerHTML = `<span class="font-medium">${formatDate(swalathDate)}</span> <span class="text-amber-500">🌙</span>`;
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      showSwalathCountdown();
-
-      const closeBtn = document.getElementById('swalath-close');
-      const box = document.getElementById("swalath-box");
-
-      if (closeBtn && box) {
-        closeBtn.addEventListener('click', function () {
-          box.classList.add("opacity-0", "scale-95");
-          setTimeout(() => {
-            box.classList.add("hidden");
-            box.classList.remove("opacity-0", "scale-95");
-          }, 300);
-        });
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchHijriData();
     });
 
-    console.log("Swalath countdown initialized");
+    const sheetCSVUrl = 'https://docs.google.com/spreadsheets/d/1913_i-nVTrLxWGLTb8j_V7jXMhPs3ZAPZzuL5vA6rbw/export?format=csv&gid=0';
+
+    async function fetchHijriData() {
+      try {
+        const response = await fetch(sheetCSVUrl);
+        const csvText = await response.text();
+        const rows = csvText.trim().split('\n');
+
+        if (rows.length < 3) {
+          showError('Row 3 not found.');
+          return;
+        }
+
+        const [hijriDay, hijriMonth, hijriYear] = rows[2].split(',').map(col => col.trim());
+
+        updateDOM({ hijriDay, hijriMonth, hijriYear });
+        checkReminder(hijriDay, hijriMonth);
+
+      } catch (error) {
+        showError('Error loading data.');
+        console.error('Error fetching Hijri data:', error);
+      }
+    }
+
+    function updateDOM({ hijriDay, hijriMonth, hijriYear }) {
+      document.getElementById('day').textContent = hijriDay;
+      document.getElementById('month').textContent = hijriMonth;
+      document.getElementById('year').textContent = hijriYear;
+      document.getElementById('output').textContent = `🧾 Parsed: ${hijriMonth} ${hijriDay}, ${hijriYear}`;
+    }
+
+    function showError(message) {
+      document.getElementById('output').textContent = message;
+    }
+
+    function checkReminder(day, month) {
+      const reminders = [
+        { day: '10', month: 'Muharram', message: 'lorem3dfdfd fdfdefd dfdf' },
+        { day: '12', month: 'Rabi al-Awwal', message: 'dfdfdfdfdfdfdfdfd fddfdfdfdfdf' },
+        { day: '27', month: 'Rajab', message: 'adsf a sdfgsdgas gasdfgasdfgsda asdfgsdaf' },
+        { day: '15', month: 'Sha\'ban', message: 'jhvdfshjk  j jn nmzxcvhjnm hj' },
+        { day: '1', month: 'Ramadan', message: 'dsfgdfsg dsfgsdfgsdf erryuy7tdfg ' },
+        { day: '27', month: 'Ramadan', message: 'jiasdf wdfiopuv nm,er   er' },
+        { day: '1', month: 'Shawwal', message: 'jk ghsdop m, rtiol  op m,. ' },
+        { day: '9', month: 'Dhul-Hijjah', message: '121 3455 76 76453 523423 32 ' },
+        { day: '18', month: 'Dhul-Qa\'dah', message: 'ghj fghjdf ghj jkh kl; uio 78y fty gcv' }
+      ];
+
+      const hijriMonthOrder = [
+        'Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani',
+        'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhul-Qi\'dah', 'Dhul-Hijjah'
+      ];
+
+      const todayIndex = hijriMonthOrder.indexOf(month);
+      const todayDay = parseInt(day);
+      let nextEvent = null;
+      let minDaysDiff = Infinity;
+
+      for (const reminder of reminders) {
+        const eventMonthIndex = hijriMonthOrder.indexOf(reminder.month);
+        const eventDay = parseInt(reminder.day);
+        let daysDiff = (eventMonthIndex - todayIndex) * 30 + (eventDay - todayDay);
+
+        if (daysDiff < 0) daysDiff += 354;
+
+        // Show today's popup if match
+        if (reminder.day === day && reminder.month === month) {
+          showReminder(reminder.message);
+        }
+
+        if (daysDiff > 0 && daysDiff < minDaysDiff) {
+          minDaysDiff = daysDiff;
+          nextEvent = reminder;
+        }
+      }
+
+      if (nextEvent) {
+        const extraLine = `⏳ ${minDaysDiff} day(s) left until: ${nextEvent.message}`;
+        document.getElementById('output').textContent += `\n${extraLine}`;
+        
+        // Show top banner
+        const banner = document.getElementById('countdownBanner');
+        const text = document.getElementById('countdownText');
+        text.textContent = extraLine;
+        banner.classList.remove('hidden');
+      } else {
+        document.getElementById('output').textContent += `\n✅ No upcoming special days found.`;
+      }
+    }
+
+    function showReminder(message) {
+      document.getElementById('alertMessage').textContent = message;
+      document.getElementById('alertBox').classList.remove('hidden');
+    }
+
+    function closeAlert() {
+      document.getElementById('alertBox').classList.add('hidden');
+    }
   </script>
+
+  <style>
+    @keyframes bounce-in {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-bounce-in {
+      animation: bounce-in 0.4s ease-out;
+    }
+  </style>
 </body>
 </html>

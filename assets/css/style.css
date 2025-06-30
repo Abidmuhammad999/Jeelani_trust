@@ -3,7 +3,7 @@
       --navy: #0a1f44;
       --navy-light: #1a3a6b;
       --navy-lighter: #2a4f8a;
-      --gold: #d4af37;
+      --gold: #d4af37;  
     }
     .bg-navy { background-color: var(--navy); }
     .bg-gold { background-color: var(--gold); }
