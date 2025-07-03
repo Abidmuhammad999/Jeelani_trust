@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Jeelani Trust is dedicated to community development through education, healthcare, and empowerment programs.">
-  <meta name="keywords" content="Jeelani Trust, charity, community development, education, healthcare, empowerment">
-  <meta name="author" content="Jeelani Trust">
+   <script>
+    fetch("meta.html")
+      .then(res => res.text())
+      .then(data => document.head.insertAdjacentHTML("afterbegin", data));
+  </script>
   <title>Home | Jeelani Trust</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="style.css">
@@ -21,6 +20,8 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="tailwind.config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <style>
     /* Update your CSS to this */
     [id] {
@@ -35,11 +36,14 @@
       overflow-x: hidden;
       /* Only horizontal, not vertical */
     }
+    .olive {
+      background-color: #306458;
+    }
   </style>
 
 </head>
 
-<body class="bg-gray-50 font-sans ">
+<body class="bg-gray-50 font-sans">
 
   <!-- Navbar -->
 <nav class="bg-white text-[#24544a] shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
@@ -89,7 +93,7 @@
 
       <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-[#003C43] focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+        class="md:hidden text-forestTeal-700 focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
         aria-label="Toggle mobile menu" id="menu-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
@@ -99,7 +103,7 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden hidden fixed inset-0 bg-navy bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6">
+  <div id="mobile-menu" class="md:hidden hidden fixed inset-0 bg-forestTeal-900  bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-forestTeal-100">
     <div class="flex flex-col space-y-4">
       <a href="#home"
         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Home</a>
@@ -125,7 +129,7 @@
 </nav>
 
 
-<div class="w-full text-[#24544a] font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]">
+<div class="w-full text-forestTeal-600 font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]">
   <div class="max-w-full px-3  md:px-10 h-full flex items-center justify-between md:justify-end gap-2 md:gap-6 text-base sm:text-lg md:text-xl">
 
     <!-- 📅 Gregorian Date -->
@@ -142,7 +146,7 @@
          class="flex items-baseline gap-1 whitespace-nowrap"
          style="font-family: 'El Messiri', sans-serif;">
       <span id="hijri-day" class="text-[#24544a] font-bold text-xl">23</span>
-      <span id="hijri-month" class="text-[#138d75] text-lg">Dhul Hijjah</span>
+      <span id="hijri-month" class="text-[#138d75] text-lg uppercase font-bold">Dhul Hijjah</span>
       <span id="hijri-year" class="text-[#24544a] text-base">1447</span>
     </div>
 
@@ -211,42 +215,43 @@
 
 
 <!-- About Us Section -->
-  <section id="about" class="py-16 bg-white">
+  <section id="about" class="py-16 bg-white  text-forestTeal-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 data-aos="fade-up" data-aos-duration="1000" class="text-3xl md:text-4xl font-bold heading-font text-gray-800 mb-6">About <span class="text-[#16a085] "> Jeelani Trust</span></h2>
+        <h2 data-aos="fade-up" data-aos-duration="1000" class="text-3xl md:text-4xl font-bold heading-font mb-6 text-forestTeal-900">About <span class="text-[#16a085] "> Jeelani Trust</span></h2>
         <!-- <div class="w-24 h-1 bg-emerald-500 mx-auto"></div> -->
       </div>
       
       <div class="grid md:grid-cols-3 gap-12">
         <div class="md:col-span-1">
-          <h3 data-aos="fade-up" data-aos-duration="1500"   class="text-2xl font-bold text-gray-800 mb-4 heading-font">Our Story</h3>
-          <img data-aos="zoom-in" data-aos-duration="1500" data-aos-easing="ease-in-out" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our Team" class="rounded-lg shadow-md w-full h-64 object-cover">
+          <h3 data-aos="fade-up" data-aos-duration="1500"   class="text-2xl font-bold text-forestTeal-900 mb-4 heading-font">Our Story</h3>
+          <img data-aos="zoom-in-up" data-aos-duration="1500" data-aos-easing="ease-in-out" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our Team" class="rounded-lg shadow-md w-full h-64 object-cover">
         </div>
         <div class="md:col-span-2">
           <div  class="space-y-8">
             <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold text-gray-800 mb-3">Who We Are</h4>
-              <p class="text-gray-600 leading-relaxed">
-                Jeelani Trust is a non-profit organization established in 1985 with the mission to empower underprivileged communities through education, healthcare, and sustainable development programs. Our work spans across multiple states in India, touching thousands of lives each year.
+              <h4 class="text-xl font-semibold  mb-3 text-forestTeal-800">Who We Are</h4>
+              <p class=" leading-relaxed font-opensans">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A eligendi cumque saepe cum reiciendis, accusamus consequuntur, est quae dolore nulla sapiente corrupti at consectetur aperiam vitae quas perspiciatis sit iure.
               </p>
             </div>
-            
-            <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold text-gray-800 mb-3">Our Vision</h4>
-              <p class="text-gray-600 leading-relaxed">
+             <div data-aos="fade-up" data-aos-duration="1500">
+             <h4 class="text-xl font-semibold  mb-3 text-forestTeal-800">Our Vision</h4>
+
+              <p class=" leading-relaxed">
                 We envision a society where every individual has access to quality education, healthcare, and opportunities for growth, regardless of their socio-economic background. Our goal is to create self-sustaining communities that can thrive independently.
               </p>
             </div>
             
             <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold text-gray-800 mb-3">Our Approach</h4>
-              <p class="text-gray-600 leading-relaxed">
+              <h4 class="text-xl font-semibold text-forestTeal-800 mb-3">Our Approach</h4>
+              <p class=" leading-relaxed">
                 We believe in holistic development through community participation. Our programs are designed with long-term impact in mind, focusing on education, women's empowerment, healthcare access, and skill development. We partner with local communities to ensure our initiatives are culturally appropriate and sustainable.
               </p>
             </div>
           </div>
         </div>
+            <div data-aos="fade-up" data-aos-duration="1500">
       </div>
       
       
@@ -262,8 +267,8 @@
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0  mix-blend-overlay"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
-      <h1 class="text-4xl   md:text-4xl font-bold heading-font text-gray-800 mb-4">Our <span class="text-[#16a085] ">Programs</span></h1>
+    <div class="max-w-7xl mx-auto px-4 text-center relative z-10" data-aos="fade-up"  data-aos-duration="1500">
+      <h1 class="text-4xl   md:text-4xl font-bold heading-font text-gray-800 mb-4">Our <span class="text-[#16a085] ">Initiatives</span></h1>
       <p class="text-lg  max-w-2xl mx-auto font-serif">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptatibus nisi laborum ducimus voluptas amet?</p>
      
     </div>
@@ -274,7 +279,7 @@
    
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 ">
       <!-- Card 1 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="500">
+      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="1500">
         <div class="relative">
           <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
           <div class="absolute inset-0 60"></div>
@@ -299,7 +304,7 @@
       <!-- Clone 3 more with same structure -->
 
       <!-- Card 2 -->
-     <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="500">
+     <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="1500">
         <div class="relative">
           <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
           <div class="absolute inset-0 60"></div>
@@ -322,7 +327,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="500">
+      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="1500">
         <div class="relative">
           <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
           <div class="absolute inset-0 60"></div>
@@ -343,7 +348,7 @@
           </div>
         </div>
       </div>
-    <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="500">
+    <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all " data-aos="fade-up"  data-aos-duration="1500">
         <div class="relative">
           <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
           <div class="absolute inset-0 60"></div>
@@ -375,7 +380,7 @@
 
   <!-- Gallery Section -->
   <!-- Gallery Header -->
-  <section id="gallery" class="text-center py-16 px-4 bg-[#e8f8f5] shadow-sm  text-[#95a5a2] ">
+  <section id="gallery" class="text-center py-16 px-4 bg-[#e8f8f5] shadow-sm  text-[#95a5a2] " data-aos="fade-up"  data-aos-duration="1500">
     <h1 class="text-4xl font-bold md:text-4xl  heading-font text-gray-800 mb-4">Our <span class="text-[#16a085] ">Gallery</span></h1>
     <p class="text-center mb-12 text-lg">Browse through our collection of event photos and milestones.</p>
   </section>
@@ -384,9 +389,9 @@
   <section class="py-16 px-4 max-w-7xl mx-auto ">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <!-- Image Cards -->
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1019/600/400" alt="Event 1"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -395,9 +400,9 @@
         </div>
       </div>
 
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1026/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -405,9 +410,9 @@
           <p class="text-center text-gray-700 text-sm">Event description goes here</p>
         </div>
       </div>
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1028/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -415,9 +420,9 @@
           <p class="text-center text-gray-700 text-sm">Event description goes here</p>
         </div>
       </div>
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1029/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -425,9 +430,9 @@
           <p class="text-center text-gray-700 text-sm">Event description goes here</p>
         </div>
       </div>
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1020/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -436,9 +441,9 @@
         </div>
       </div>
 
-      <div
+      <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" data-aos="zoom-in">
+        <div class="overflow-hidden" >
           <img src="https://picsum.photos/id/1037/600/400" alt="Event 3"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -478,9 +483,9 @@
         <div class="w-24 h-1 bg-emerald-500 mx-auto mt-4"></div>
       </div>
       
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12  " >
         <!-- Contact Form -->
-        <div class="bg-gray-50 p-8  shadow-lg">
+        <div class="bg-gray-50 p-8  shadow-lg" data-aos="zoom-in" data-aos-duration="1000">
           <h3 class="text-2xl font-bold text-gray-800 mb-16 heading-font">Send a Message</h3>
 
           <form class="space-y-6"   action="https://formspree.io/f/999adm999@gmail.com" method="POST">
@@ -514,7 +519,7 @@
         
         <!-- Contact Info -->
         <div>
-          <div class="bg-gray-50 p-8 shadow-lg mb-8 ">
+          <div class="bg-gray-50 p-8 shadow-lg mb-8 " data-aos="fade-up" data-aos-duration="1000">
             <h3 class="text-2xl font-bold text-gray-800 mb-6 heading-font">Contact Information</h3>
             
             <div class="space-y-6">
@@ -573,7 +578,7 @@
           </div>
           
           <!-- Map -->
-          <div class="overflow-hidden shadow-lg ">
+          <div class="overflow-hidden shadow-lg " data-aos="fade-up" data-aos-duration="1000">
             <iframe class="w-full h-80" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463.41169270606616!2d76.36041532325405!3d10.120217533719988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080f325753e27f%3A0x31c401ecb87a713d!2sQUTHBUZZAMAN%20%7C%20JEELANI%20SHAREEF%20%7C%20NIZAMIA%20INSTITUTE!5e0!3m2!1sen!2sin!4v1747251026326!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
@@ -582,7 +587,7 @@
   </section>
 
  <!-- Footer -->
-<footer class="bg-[#306458] text-white pt-16 pb-8 ">
+<footer class="bg-olive text-white pt-16 pb-8 "  data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
   <div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <div>

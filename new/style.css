@@ -1,15 +1,15 @@
 
     :root {
-      --navy: #0a1f44;
+      --olive: #306458;
       --navy-light: #1a3a6b;
       --navy-lighter: #2a4f8a;
       --gold: #d4af37;  
     }
-    .bg-navy { background-color: var(--navy); }
+    .bg-olive { background-color: var(--olive); }
     .bg-gold { background-color: var(--gold); }
     .bg-navy-light { background-color: var(--navy-light); }
     .bg-navy-lighter { background-color: var(--navy-lighter); }
-    .text-navy { color: var(--navy); }
+    .text-olive { color: var(--olive); }
     .text-gold { color: var(--gold); }
     .border-navy { border-color: var(--navy); }
     .border-gold {  border: 2px solid var(--gold); }
