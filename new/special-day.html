@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Islamic Special Day</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+    body {
+      font-family: 'Amiri', serif;
+    }
+  </style>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#f0f4ff',
+              100: '#e0e9ff',
+              200: '#c7d7fe',
+              300: '#a5b8fc',
+              400: '#8191f8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#0a1f44',
+            },
+            gold: {
+              500: '#d4af37'
+            }
+          },
+          fontFamily: {
+            'amiri': ['Amiri', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Auto Redirect -->
+  <script>
+    function goToHome() {
+      localStorage.setItem('specialShownTime', new Date().getTime());
+      window.location.href = "single3.html";
+    }
+    setTimeout(goToHome, 30000); // auto-redirect after 30 sec
+  </script>
+</head>
+<body class="relative bg-[url('https://source.unsplash.com/featured/?islamic,mosque')] bg-cover bg-center text-white h-screen w-screen flex items-center justify-center">
+
+  <!-- Blurred Dark Overlay -->
+  <div class="absolute inset-0 bg-navy-900/60 backdrop-blur-md"></div>
+
+  <!-- Centered Glassmorphic Box -->
+  <div class="relative z-10 bg-white/20 backdrop-blur-xl border border-white/20 text-white rounded-2xl shadow-xl max-w-md w-full p-8 text-center">
+
+    <!-- Close Button -->
+    <button onclick="goToHome()" class="absolute top-4 right-4 text-white hover:text-gold-500 text-2xl font-bold">
+      &times;
+    </button>
+
+    <!-- Content -->
+    <h1 class="text-3xl font-bold mb-2">🌙 Islamic Special Day</h1>
+    <p class="text-xl mb-1">A Day of Reflection</p>
+    <p class="mb-6 text-lg">May Allah shower His blessings upon you. Take a moment to reflect, make dua, and renew your intentions today.</p>
+    
+    <p class="text-sm text-white/70">Redirecting in 30 seconds...</p>
+  </div>
+</body>
+</html>

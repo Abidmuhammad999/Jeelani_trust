@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <script>
+  <script>
     fetch("meta.html")
       .then(res => res.text())
       .then(data => document.head.insertAdjacentHTML("afterbegin", data));
@@ -12,142 +12,260 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <script src="tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
   <style>
     /* Update your CSS to this */
     [id] {
       scroll-margin-top: 80px;
       /* Modern approach */
     }
+
     .heading-font {
       font-family: 'Playfair Display', serif;
     }
+
     html,
     body {
       overflow-x: hidden;
       /* Only horizontal, not vertical */
     }
+
     .olive {
       background-color: #306458;
     }
+.success-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.success-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+}
+
+.success-content svg {
+    margin-bottom: 20px;
+}
+
+.success-content h3 {
+    color: #2d572c;
+    margin-bottom: 10px;
+}
+
+.success-content p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    font-size: 14px;
+    color: #777;
+    margin-top: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
   </style>
+<script>
+  window.onload = function () {
+    let currentSlide = 0;
+    const slidesContainer = document.getElementById('carouselSlides');
+    const totalSlides = slidesContainer.children.length;
+
+    function updateSlide() {
+      slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function closeSpecialPhotoModal() {
+      document.getElementById("specialPhotoModal").style.display = "none";
+      localStorage.setItem("specialShownTime", new Date().getTime());
+    }
+
+    // Run the slider every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Auto close modal after 30 seconds
+    setTimeout(closeSpecialPhotoModal, 60000);
+
+    // Attach close to button
+    window.closeSpecialPhotoModal = closeSpecialPhotoModal;
+  }
+</script>
+
 
 </head>
 
 <body class="bg-gray-50 font-sans">
 
   <!-- Navbar -->
-<nav class="bg-white text-[#24544a] shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
-  <div class="max-w-full ">
-    <div class="flex items-center justify-between h-[72px] px-[10px] relative shadow-[0_2px_18px_0_rgba(129,162,182,0.2)] bg-white">
+  <nav
+    class="bg-white text-[#24544a] shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
+    <div class="max-w-full ">
+      <div
+        class="flex items-center justify-between h-[72px] px-[10px] relative shadow-[0_2px_18px_0_rgba(129,162,182,0.2)] bg-white">
 
-      <!-- Logo -->
-      <div class="flex items-center space-x-3 group">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gold transition-transform group-hover:scale-110"
-          viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd"
-            d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-            clip-rule="evenodd" />
-        </svg>
-        <a href="index.html" class="font-bold text-2xl tracking-tight">Jeelani Trust</a>
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gold transition-transform group-hover:scale-110"
+            viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+              clip-rule="evenodd" />
+          </svg>
+          <a href="index.html" class="font-bold text-2xl tracking-tight">Jeelani Trust</a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-1">
+          <a href="#"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Home</span>
+          </a>
+          <a href="#about"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">About
+              Us</span>
+          </a>
+          <a href="#programs"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Programs</span>
+          </a>
+          <a href="#gallery"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Gallery</span>
+          </a>
+          <a href="#contact"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Contact</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-forestTeal-700 focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+          aria-label="Toggle mobile menu" id="menu-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex space-x-1">
-        <a href="#"
-          class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
-          <span
-            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Home</span>
-        </a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" data-aos="fade-down" data-aos-duration="1000"
+      class="md:hidden hidden fixed inset-0 bg-forestTeal-900  bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-forestTeal-100">
+      <div class="flex flex-col space-y-4">
+        <a href="#home"
+          class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Home</a>
         <a href="#about"
-          class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
-          <span
-            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">About
-            Us</span>
-        </a>
+          class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">About
+          Us</a>
         <a href="#programs"
-          class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
-          <span
-            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Programs</span>
-        </a>
+          class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Programs</a>
         <a href="#gallery"
-          class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
-          <span
-            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Gallery</span>
-        </a>
+          class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Gallery</a>
         <a href="#contact"
-          class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
-          <span
-            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Contact</span>
-        </a>
+          class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Contact</a>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-forestTeal-700 focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
-        aria-label="Toggle mobile menu" id="menu-toggle">
+        class="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+        aria-label="Close menu" id="menu-close">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
+  </nav>
+
+
+
+  <div id="home" class="w-full text-forestTeal-600 font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]">
+    <div
+      class="max-w-full px-3  md:px-10 h-full flex items-center justify-between md:justify-end gap-2 md:gap-6 text-base sm:text-lg md:text-xl">
+
+      <!-- 📅 Gregorian Date -->
+      <div id="gregorian-date" class="font-[Playfair Display] tracking-wide text-left md:text-right whitespace-nowrap">
+        <span>30 June 2025</span>
+      </div>
+
+      <!-- Separator | shown only on md+ -->
+      <div class="hidden md:block text-[#ccc] text-xl">|</div>
+
+      <!-- 🌙 Hijri Date -->
+      <div id="hijri-date" class="flex items-baseline gap-1 whitespace-nowrap"
+        style="font-family: 'El Messiri', sans-serif;">
+        <span id="hijri-day" class="text-[#24544a] font-bold text-xl">23</span>
+        <span id="hijri-month" class="text-[#138d75] text-lg uppercase font-bold">Dhul Hijjah</span>
+        <span id="hijri-year" class="text-[#24544a] text-base">1447</span>
+      </div>
+
+    </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" data-aos="fade-down" data-aos-duration="1000" class="md:hidden hidden fixed inset-0 bg-forestTeal-900  bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-forestTeal-100">
-    <div class="flex flex-col space-y-4">
-      <a href="#home"
-        class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Home</a>
-      <a href="#about"
-        class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">About
-        Us</a>
-      <a href="#programs"
-        class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Programs</a>
-      <a href="#gallery"
-        class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Gallery</a>
-      <a href="#contact"
-        class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Contact</a>
-    </div>
+<!-- Islamic Photo Modal Carousel -->
+<div id="specialPhotoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl w-full max-w-md h-[600px] overflow-hidden">
 
-    <button
-      class="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
-      aria-label="Close menu" id="menu-close">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+    <!-- Close Button -->
+    <button onclick="closeSpecialPhotoModal()" class="absolute top-3 right-4 text-white hover:text-yellow-400 text-2xl font-bold z-10">
+      &times;
     </button>
-  </div>
-</nav>
 
+    <!-- Carousel Wrapper -->
+    <div class="overflow-hidden w-full h-full">
+      <div id="carouselSlides" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+        <img src="isw/sw1.jpg" class="w-full flex-shrink-0 object-contain mx-auto my-auto" />
+        <img src="isw/sw2.jpg" class="w-full flex-shrink-0 object-contain mx-auto my-auto" />
+        <img src="isw/sw3.jpg" class="w-full flex-shrink-0 object-contain mx-auto my-auto" />
 
-<div id="home" class="w-full text-forestTeal-600 font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]">
-  <div class="max-w-full px-3  md:px-10 h-full flex items-center justify-between md:justify-end gap-2 md:gap-6 text-base sm:text-lg md:text-xl">
-
-    <!-- 📅 Gregorian Date -->
-    <div id="gregorian-date"
-         class="font-[Playfair Display] tracking-wide text-left md:text-right whitespace-nowrap">
-      <span>30 June 2025</span>
-    </div>
-
-    <!-- Separator | shown only on md+ -->
-    <div class="hidden md:block text-[#ccc] text-xl">|</div>
-
-    <!-- 🌙 Hijri Date -->
-    <div id="hijri-date"
-         class="flex items-baseline gap-1 whitespace-nowrap"
-         style="font-family: 'El Messiri', sans-serif;">
-      <span id="hijri-day" class="text-[#24544a] font-bold text-xl">23</span>
-      <span id="hijri-month" class="text-[#138d75] text-lg uppercase font-bold">Dhul Hijjah</span>
-      <span id="hijri-year" class="text-[#24544a] text-base">1447</span>
+       
+      </div>
     </div>
 
   </div>
@@ -155,313 +273,357 @@
 
 
 
+  <section id="leadership-portraits"
+    class="w-full h-[calc(100vh-132px)] flex flex-col md:flex-row bg-white overflow-hidden">
 
-
-
-
-
-<section id="leadership-portraits"
-  class="w-full h-[calc(100vh-132px)] flex flex-col md:flex-row bg-white overflow-hidden">
-
-  <!-- Founding Chairman -->
-  <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
-    <img data-aos="zoom-out" data-aos-duration="1500" src="UMahan.jpg" alt="Founding Chairman U. Mahan"
-         class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-    <div data-aos="fade-right" data-aos-duration="1500" class="absolute bottom-0 left-0 w-full p-6 z-10">
-      <h3   class="text-2xl font-bold text-white heading-font">lorem</h3>
-      <p class="text-emerald-200 mb-4">Lorem, ipsum.</p>
-      <button class="bg-white/60 hover:bg-white/80 text-[#24544a] px-4 py-2 rounded-md text-sm font-semibold transition">
-        Learn More
-      </button>
+    <!-- Founding Chairman -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+      <img data-aos="zoom-out" data-aos-duration="1500" src="UMahan.jpg" alt="Founding Chairman U. Mahan"
+        class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+      <div data-aos="fade-right" data-aos-duration="1500" class="absolute bottom-0 left-0 w-full p-6 z-10">
+        <h3 class="text-2xl font-bold text-white heading-font">lorem</h3>
+        <p class="text-emerald-200 mb-4">Lorem, ipsum.</p>
+        <button
+          class="bg-white/60 hover:bg-white/80 text-[#24544a] px-4 py-2 rounded-md text-sm font-semibold transition">
+          Learn More
+        </button>
+      </div>
+      <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
     </div>
-    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
-  </div>
 
-  <!-- Current Chairman -->
-  <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
-    <img data-aos="zoom-out" data-aos-duration="1500" src="NMahan.jpg" alt="Current Chairman N. Mahan"
-         class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-    <div data-aos="fade-right" data-aos-duration="1500" class="absolute bottom-0 left-0 w-full p-6 z-10">
-      <h3 class="text-2xl font-bold text-white heading-font">lorem</h3>
-      <p class="text-emerald-200 mb-4">Lorem, ipsum.</p>
-      <button class="bg-white/60 hover:bg-white/80 text-[#24544a] px-4 py-2 rounded-md text-sm font-semibold transition">
-        Learn More
-      </button>
+    <!-- Current Chairman -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+      <img data-aos="zoom-out" data-aos-duration="1500" src="NMahan.jpg" alt="Current Chairman N. Mahan"
+        class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+      <div data-aos="fade-right" data-aos-duration="1500" class="absolute bottom-0 left-0 w-full p-6 z-10">
+        <h3 class="text-2xl font-bold text-white heading-font">lorem</h3>
+        <p class="text-emerald-200 mb-4">Lorem, ipsum.</p>
+        <button
+          class="bg-white/60 hover:bg-white/80 text-[#24544a] px-4 py-2 rounded-md text-sm font-semibold transition">
+          Learn More
+        </button>
+      </div>
+      <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
     </div>
-    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
-  </div>
-</section>
+  </section>
 
 
 
-<section id="quotes" class="bg-[#e8f6f3] py-16 px-6 text-center ">
-  <div class="max-w-3xl mx-auto">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gold mx-auto mb-4" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M7.17 6A5 5 0 002 11v1a5 5 0 005 5v-2a3 3 0 01-3-3v-1a3 3 0 013-3h.17zm10 0A5 5 0 0012 11v1a5 5 0 005 5v-2a3 3 0 01-3-3v-1a3 3 0 013-3h.17z"/>
-    </svg>
+  <section id="quotes" class="bg-[#e8f6f3] py-16 px-6 text-center ">
+    <div class="max-w-3xl mx-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gold mx-auto mb-4" viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          d="M7.17 6A5 5 0 002 11v1a5 5 0 005 5v-2a3 3 0 01-3-3v-1a3 3 0 013-3h.17zm10 0A5 5 0 0012 11v1a5 5 0 005 5v-2a3 3 0 01-3-3v-1a3 3 0 013-3h.17z" />
+      </svg>
 
-    <p data-aos="fade-up" data-aos-duration="1500"  class="text-xl sm:text-2xl font-serif italic text-[#24544a] leading-relaxed">
-      "Whoever does not show mercy to our young ones and respect our elders is not one of us."
-    </p>
+      <p data-aos="fade-up" data-aos-duration="1500"
+        class="text-xl sm:text-2xl font-serif italic text-[#24544a] leading-relaxed">
+        "Whoever does not show mercy to our young ones and respect our elders is not one of us."
+      </p>
 
-    <div data-aos="fade-up" data-aos-duration="1500" class="mt-6 text-[#138d75] font-semibold text-lg">
-      — Prophet Muhammad ﷺ
+      <div data-aos="fade-up" data-aos-duration="1500" class="mt-6 text-[#138d75] font-semibold text-lg">
+        — Prophet Muhammad ﷺ
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
 
-<!-- About Us Section -->
+  <!-- About Us Section -->
   <section id="about" class="py-16 bg-white  text-forestTeal-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 data-aos="fade-up" data-aos-duration="1000" class="text-3xl md:text-4xl font-bold heading-font mb-6 text-forestTeal-900">About <span class="text-[#16a085] "> Jeelani Trust</span></h2>
+        <h2 data-aos="fade-up" data-aos-duration="1000"
+          class="text-3xl md:text-4xl font-bold heading-font mb-6 text-forestTeal-900">About <span
+            class="text-[#16a085] "> Jeelani Trust</span></h2>
         <!-- <div class="w-24 h-1 bg-emerald-500 mx-auto"></div> -->
       </div>
-      
+
       <div class="grid md:grid-cols-3 gap-12">
         <div class="md:col-span-1">
-          <h3 data-aos="fade-up" data-aos-duration="1500"   class="text-2xl font-bold text-forestTeal-900 mb-4 heading-font">Our Story</h3>
-          <img data-aos="zoom-in-up" data-aos-duration="1500" data-aos-easing="ease-in-out" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Our Team" class="rounded-lg shadow-md w-full h-64 object-cover">
+          <h3 data-aos="fade-up" data-aos-duration="1500"
+            class="text-2xl font-bold text-forestTeal-900 mb-4 heading-font">Our Story</h3>
+          <img data-aos="zoom-in-up" data-aos-duration="1500" data-aos-easing="ease-in-out"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            alt="Our Team" class="rounded-lg shadow-md w-full h-64 object-cover">
         </div>
         <div class="md:col-span-2">
-          <div  class="space-y-8">
+          <div class="space-y-8">
             <div data-aos="fade-up" data-aos-duration="1500">
               <h4 class="text-xl font-semibold  mb-3 text-forestTeal-800">Who We Are</h4>
               <p class=" leading-relaxed font-opensans">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A eligendi cumque saepe cum reiciendis, accusamus consequuntur, est quae dolore nulla sapiente corrupti at consectetur aperiam vitae quas perspiciatis sit iure.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A eligendi cumque saepe cum reiciendis,
+                accusamus consequuntur, est quae dolore nulla sapiente corrupti at consectetur aperiam vitae quas
+                perspiciatis sit iure.
               </p>
             </div>
-             <div data-aos="fade-up" data-aos-duration="1500">
-             <h4 class="text-xl font-semibold  mb-3 text-forestTeal-800">Our Vision</h4>
+            <div data-aos="fade-up" data-aos-duration="1500">
+              <h4 class="text-xl font-semibold  mb-3 text-forestTeal-800">Our Vision</h4>
 
               <p class=" leading-relaxed">
-                We envision a society where every individual has access to quality education, healthcare, and opportunities for growth, regardless of their socio-economic background. Our goal is to create self-sustaining communities that can thrive independently.
+                We envision a society where every individual has access to quality education, healthcare, and
+                opportunities for growth, regardless of their socio-economic background. Our goal is to create
+                self-sustaining communities that can thrive independently.
               </p>
             </div>
-            
+
             <div data-aos="fade-up" data-aos-duration="1500">
               <h4 class="text-xl font-semibold text-forestTeal-800 mb-3">Our Approach</h4>
               <p class=" leading-relaxed">
-                We believe in holistic development through community participation. Our programs are designed with long-term impact in mind, focusing on education, women's empowerment, healthcare access, and skill development. We partner with local communities to ensure our initiatives are culturally appropriate and sustainable.
+                We believe in holistic development through community participation. Our programs are designed with
+                long-term impact in mind, focusing on education, women's empowerment, healthcare access, and skill
+                development. We partner with local communities to ensure our initiatives are culturally appropriate and
+                sustainable.
               </p>
             </div>
           </div>
         </div>
-            <div data-aos="fade-up" data-aos-duration="1500">
+        <div data-aos="fade-up" data-aos-duration="1500">
+        </div>
+
+
       </div>
-      
-      
-    </div>
   </section>
 
   <!-- programs -->
 
 
-<section id='programs' "min-h-screen bg-[#eafaf1] text-green-900">
-  <!-- Hero Header -->
-  <header class="relative bg-[#eafaf1] text-[#0e6655] py-20 overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0 mix-blend-overlay"></div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 text-center relative z-10" data-aos="fade-up" data-aos-duration="1500">
-      <h1 class="text-4xl md:text-4xl font-bold heading-font text-gray-800 mb-4">
-        Our <span class="text-[#16a085]">Initiatives</span>
-      </h1>
-      <p class="text-lg max-w-2xl mx-auto font-serif">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptatibus nisi laborum ducimus voluptas amet?
-      </p>
-    </div>
-  </header>
-
-  <!-- Programs Grid -->
-  <main id="programss" class="max-w-7xl mx-auto px-4 py-20">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      
-      <!-- Card 1 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="0">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative One</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
+  <section id='programs' "min-h-screen bg-[#eafaf1] text-green-900">
+    <!-- Hero Header -->
+    <header class="relative bg-[#eafaf1] text-[#0e6655] py-20 overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 mix-blend-overlay"></div>
       </div>
-
-      <!-- Copy/Paste for other 7 cards below, only delay changes -->
-
-      <!-- Card 2 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Two</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
+      <div class="max-w-7xl mx-auto px-4 text-center relative z-10" data-aos="fade-up" data-aos-duration="1500">
+        <h1 class="text-4xl md:text-4xl font-bold heading-font text-gray-800 mb-4">
+          Our <span class="text-[#16a085]">Initiatives</span>
+        </h1>
+        <p class="text-lg max-w-2xl mx-auto font-serif">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut voluptatibus nisi laborum ducimus voluptas amet?
+        </p>
       </div>
+    </header>
 
-      <!-- Card 3 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+    <!-- Programs Grid -->
+    <main id="programss" class="max-w-7xl mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        <!-- Card 1 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="0">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative One</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Three</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
+
+        <!-- Copy/Paste for other 7 cards below, only delay changes -->
+
+        <!-- Card 2 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="100">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Two</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="200">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Three</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="300">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Four</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="400">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Five</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="500">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Six</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="600">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Seven</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="700">
+          <div class="relative">
+            <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Initiative Eight</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Card 4 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Four</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Five</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Six</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Seven</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 8 -->
-      <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
-        <div class="relative">
-          <img src="dummy-image-square.jpg" alt="Program" class="w-full h-52 object-cover">
-          <div class="absolute bottom-0 left-0 p-3">
-            <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span>
-          </div>
-        </div>
-        <div class="p-5 space-y-3">
-          <h3 class="text-lg font-semibold text-green-900">Initiative Eight</h3>
-          <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor illo!</p>
-          <div class="flex justify-between items-center pt-2">
-            <a href="#" class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-              Learn More
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-</section>
+    </main>
+  </section>
 
 
 
@@ -469,11 +631,13 @@
 
   <!-- Gallery Section -->
   <!-- Gallery Header -->
-  <section id="gallery" class="text-center py-16 px-4 bg-[#e8f8f5] shadow-sm  text-[#95a5a2] " >
-    <div data-aos="fade-up"  data-aos-duration="1500">
+  <section id="gallery" class="text-center py-16 px-4 bg-[#e8f8f5] shadow-sm  text-[#95a5a2] ">
+    <div data-aos="fade-up" data-aos-duration="1500">
 
-      <h1 class="text-4xl font-bold md:text-4xl  heading-font text-forestTeal-900 mb-4 "> Our <span class="text-[#16a085] ">Gallery</span></h1>
-      <p class="text-center mb-12 text-lg text-forestTeal-700">Browse through our collection of event photos and milestones.</p>
+      <h1 class="text-4xl font-bold md:text-4xl  heading-font text-forestTeal-900 mb-4 "> Our <span
+          class="text-[#16a085] ">Gallery</span></h1>
+      <p class="text-center mb-12 text-lg text-forestTeal-700">Browse through our collection of event photos and
+        milestones.</p>
     </div>
   </section>
 
@@ -483,7 +647,7 @@
       <!-- Image Cards -->
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1019/600/400" alt="Event 1"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -494,7 +658,7 @@
 
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1026/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -504,7 +668,7 @@
       </div>
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1028/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -514,7 +678,7 @@
       </div>
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1029/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -524,7 +688,7 @@
       </div>
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1020/600/400" alt="Event 2"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -535,7 +699,7 @@
 
       <div data-aos="zoom-in" data-aos-duration="1000"
         class="group overflow-hidden  shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
-        <div class="overflow-hidden" >
+        <div class="overflow-hidden">
           <img src="https://picsum.photos/id/1037/600/400" alt="Event 3"
             class="gallery-img w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
         </div>
@@ -544,11 +708,12 @@
         </div>
       </div>
     </div>
-<div class="mt-8 flex justify-center">
-  <a href="#programss" class="inline-flex items-center px-6 py-3 text-base font-medium text-green-800 border border-[#2b3e3a]  mt-10 bg-white hover:bg-[#306458] hover:text-white rounded-lg transition">
-    View More Photos
-  </a>
-</div>
+    <div class="mt-8 flex justify-center">
+      <a href="#programss"
+        class="inline-flex items-center px-6 py-3 text-base font-medium text-green-800 border border-[#2b3e3a]  mt-10 bg-white hover:bg-[#306458] hover:text-white rounded-lg transition">
+        View More Photos
+      </a>
+    </div>
 
   </section>
 
@@ -566,61 +731,62 @@
   </div>
   <!-- contact -->
 
-   <!-- Contact Section -->
+  <!-- Contact Section -->
   <section id="contact" class="py-16 bg-[#e8f6f3] ">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 "  data-aos="fade-up" data-aos-duration="1500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 " data-aos="fade-up" data-aos-duration="1500">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold heading-font text-forestTeal-900 mb-4 ">Contact</h2>
-        <p class="text-lg text-forestTeal-700 max-w-2xl mx-auto ">We'd love to hear from you. Reach out for inquiries, partnerships or volunteer opportunities.</p>
-      
+        <p class="text-lg text-forestTeal-700 max-w-2xl mx-auto ">We'd love to hear from you. Reach out for inquiries,
+          partnerships or volunteer opportunities.</p>
+
       </div>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12  " >
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12  ">
         <!-- Contact Form -->
         <div class="bg-gray-50 p-8  shadow-lg" data-aos="fade-up" data-aos-duration="1000">
           <h3 class="text-2xl font-bold text-forestTeal-800 mb-16 heading-font">Get in Touch</h3>
 
-          <form class="space-y-6"   action="https://formspree.io/f/999adm999@gmail.com" method="POST">
-  <div>
-    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-greay-200 focus:outline-none focus:ring-2 focus:ring-none focus:border-forestTeal-300">
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-200">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-200">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-200">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea id="message" required rows="5" class="w-full px-4 py-3 border border-gray-200"></textarea>
+            </div>
 
-  </div>
-  <div>
-    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-greay-200 focus:outline-none focus:ring-2 focus:ring-none focus:border-forestTeal-300">
-  </div>
-  <div>
-    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-greay-200 focus:outline-none focus:ring-2 focus:ring-none focus:border-forestTeal-300">
-  </div>
-  <div>
-    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-    <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-greay-200 focus:outline-none focus:ring-2 focus:ring-none focus:border-forestTeal-300"></textarea>
-  </div>
+            <button type="submit"
+              class="w-full text-white px-6 py-4 rounded-lg font-bold mt-6 transition-all duration-500 bg-gradient-to-r from-[#117864] via-[#1abc9c] to-[#117864]">
+              Send Message
+            </button>
+          </form>
 
-  <button type="submit" 
-    class="w-full text-white px-6 py-4 rounded-lg font-bold mt-6 transition-all duration-500" 
-    style="background: linear-gradient(to right, #306458 0%, #306458 50%, #306458 100%);" 
-    onmouseover="this.style.background='linear-gradient(to right, #0e6251 0%, #16a085 50%, #0e6251 100%)'" 
-    onmouseout="this.style.background='linear-gradient(to right, #117864 0%, #1abc9c 50%, #117864 100%)'">
-    Send Message
-  </button>
-</form>
 
         </div>
-        
+
         <!-- Contact Info -->
         <div>
           <div class="bg-gray-50 p-8 shadow-lg mb-8 text-forestTeal-700" data-aos="fade-up" data-aos-duration="1000">
             <h3 class="text-2xl font-bold text-forestTeal-800 mb-6 heading-font">Contact Information</h3>
-            
+
             <div class="space-y-6">
               <div class="flex items-start">
                 <div class="bg-forestTeal-200 p-3 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
@@ -628,11 +794,13 @@
                   <p class="text-forestTeal-600">Quthbuzzaman Campus, Jeelani Shareef, Kerala 676503, India</p>
                 </div>
               </div>
-              
+
               <div class="flex items-start">
                 <div class="bg-forestTeal-200 p-3 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-7C5.716 21 3 18.284 3 15V5z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-7C5.716 21 3 18.284 3 15V5z" />
                   </svg>
                 </div>
                 <div>
@@ -641,11 +809,13 @@
                   <p class=""></p>+91 40 1234 5678</p>
                 </div>
               </div>
-              
+
               <div class="flex items-start">
                 <div class="bg-forestTeal-200 p-3 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
@@ -654,11 +824,13 @@
                   <p clas="">support@jeelanitrust.org</p>
                 </div>
               </div>
-              
+
               <div class="flex items-start">
                 <div class="bg-forestTeal-200 p-3 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-forestTeal-600" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
@@ -669,132 +841,120 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Map -->
           <div class="overflow-hidden shadow-lg " data-aos="fade-up" data-aos-duration="1000">
-            <iframe class="w-full h-80" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463.41169270606616!2d76.36041532325405!3d10.120217533719988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080f325753e27f%3A0x31c401ecb87a713d!2sQUTHBUZZAMAN%20%7C%20JEELANI%20SHAREEF%20%7C%20NIZAMIA%20INSTITUTE!5e0!3m2!1sen!2sin!4v1747251026326!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            <iframe class="w-full h-80"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463.41169270606616!2d76.36041532325405!3d10.120217533719988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080f325753e27f%3A0x31c401ecb87a713d!2sQUTHBUZZAMAN%20%7C%20JEELANI%20SHAREEF%20%7C%20NIZAMIA%20INSTITUTE!5e0!3m2!1sen!2sin!4v1747251026326!5m2!1sen!2sin"
+              allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
     </div>
   </section>
 
- <!-- Footer -->
-<footer class="bg-olive text-white pt-16 pb-8 " >
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-      <div>
-        <div class="flex items-center space-x-3 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-light-green" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-              clip-rule="evenodd" />
-          </svg>
-          <span class="font-bold text-2xl text-white">Jeelani Trust</span>
+  <!-- Footer -->
+  <footer class="bg-olive text-white pt-16 pb-8 ">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-light-green" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="font-bold text-2xl text-white">Jeelani Trust</span>
+          </div>
+          <p class="text-green-100 text-sm mb-4">Committed to creating positive change through sustainable community
+            development programs.</p>
+          <div class="flex space-x-4">
+            <a href="https://x.com/jeelanitrust" class="text-green-100 hover:text-light-green"
+              aria-label="Follow us on X">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zM16.845 20.31h2.045L7.747 3.69H5.629l11.216 16.62z" />
+              </svg>
+            </a>
+            <a href="https://instagram.com/jeelanitrust" class="text-green-100 hover:text-light-green"
+              aria-label="Follow us on Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/jeelanitrust" class="text-green-100 hover:text-light-green"
+              aria-label="Connect with us on LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
         </div>
-        <p class="text-green-100 text-sm mb-4">Committed to creating positive change through sustainable community
-          development programs.</p>
-        <div class="flex space-x-4">
-          <a href="https://x.com/jeelanitrust" class="text-green-100 hover:text-light-green" aria-label="Follow us on X">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zM16.845 20.31h2.045L7.747 3.69H5.629l11.216 16.62z" />
-            </svg>
-          </a>
-          <a href="https://instagram.com/jeelanitrust" class="text-green-100 hover:text-light-green"
-            aria-label="Follow us on Instagram">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-          </a>
-          <a href="https://linkedin.com/company/jeelanitrust" class="text-green-100 hover:text-light-green"
-            aria-label="Connect with us on LinkedIn">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
+        <div>
+          <h4 class="font-medium text-lg mb-4 text-light-green">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-green-100 hover:text-white transition-colors">Home</a></li>
+            <li><a href="#about" class="text-green-100 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#programs" class="text-green-100 hover:text-white transition-colors">Programs</a></li>
+            <li><a href="#gallery" class="text-green-100 hover:text-white transition-colors">Gallery</a></li>
+            <li><a href="#contact" class="text-green-100 hover:text-white transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium text-lg mb-4 text-light-green">Our Programs</h4>
+          <ul class="space-y-3">
+            <li><a href="#one" class="text-green-100 hover:text-white transition-colors">one</a></li>
+            <li><a href="#two" class="text-green-100 hover:text-white transition-colors">two</a></li>
+            <li><a href="#three" class="text-green-100 hover:text-white transition-colors">three</a></li>
+            <li><a href="#four" class="text-green-100 hover:text-white transition-colors">Four</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium text-lg mb-4 text-light-green">Contact Us</h4>
+          <address class="text-green-100 text-sm not-italic space-y-3">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 mr-2 mt-0.5 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>123 Trust Avenue, Hyderabad, Telangana, India</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:info@jeelanitrust.org"
+                class="hover:text-white transition-colors">info@jeelanitrust.org</a>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 mr-2 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <a href="tel:+914012345678" class="hover:text-white transition-colors">+91 40 1234 5678</a>
+            </div>
+          </address>
         </div>
       </div>
-      <div>
-        <h4 class="font-medium text-lg mb-4 text-light-green">Quick Links</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-green-100 hover:text-white transition-colors">Home</a></li>
-          <li><a href="#about" class="text-green-100 hover:text-white transition-colors">About Us</a></li>
-          <li><a href="#programs" class="text-green-100 hover:text-white transition-colors">Programs</a></li>
-          <li><a href="#gallery" class="text-green-100 hover:text-white transition-colors">Gallery</a></li>
-          <li><a href="#contact" class="text-green-100 hover:text-white transition-colors">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-medium text-lg mb-4 text-light-green">Our Programs</h4>
-        <ul class="space-y-3">
-          <li><a href="#one" class="text-green-100 hover:text-white transition-colors">one</a></li>
-          <li><a href="#two" class="text-green-100 hover:text-white transition-colors">two</a></li>
-          <li><a href="#three" class="text-green-100 hover:text-white transition-colors">three</a></li>
-          <li><a href="#four" class="text-green-100 hover:text-white transition-colors">Four</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-medium text-lg mb-4 text-light-green">Contact Us</h4>
-        <address class="text-green-100 text-sm not-italic space-y-3">
-          <div class="flex items-start">
-            <svg class="w-5 h-5 mr-2 mt-0.5 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>123 Trust Avenue, Hyderabad, Telangana, India</span>
-          </div>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <a href="mailto:info@jeelanitrust.org" class="hover:text-white transition-colors">info@jeelanitrust.org</a>
-          </div>
-          <div class="flex items-center">
-            <svg class="w-5 h-5 mr-2 text-light-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <a href="tel:+914012345678" class="hover:text-white transition-colors">+91 40 1234 5678</a>
-          </div>
-        </address>
+      <hr class="mt-8">
+      <div class="border-t border-green-800 mt-2 pt-6 text-center text-white text-sm">
+        <p>© 2025 Jeelani Trust. All Rights Reserved.
       </div>
     </div>
-    <hr class="mt-8">
-    <div class="border-t border-green-800 mt-2 pt-6 text-center text-white text-sm">
-      <p>© 2025 Jeelani Trust. All Rights Reserved.
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="main.js"></script>
-  <script src="assets/js/swalath.js"></script>
+  <script src="swalath.js"></script>
   <script src="assets/js/day-remainder-arabic.js"></script>
-  <script>
 
-  </script>
-
-  <script>
-    fetch("https://nizamiamadrasa.com/api/arabic-date/")
-      .then(res => res.json())
-      .then(data => {
-        if (!data.error) {
-          document.getElementById("hijri-day").innerText = data.day;
-          document.getElementById("hijri-month").innerText = data.month;
-          document.getElementById("hijri-year").innerText = data.year;
-        } else {
-          document.getElementById("hijri-date").innerText = "Date unavailable";
-        }
-      })
-      .catch(() => {
-        document.getElementById("hijri-date").innerText = "Error fetching date";
-      });
-  </script>
+<script src="form-submission.js"></script>
+<script src="arabic-date-api.js"></script>
 
 </body>
 
