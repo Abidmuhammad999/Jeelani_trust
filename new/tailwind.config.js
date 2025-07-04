@@ -3,20 +3,22 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        forestTeal: {
-          900: '#1d3b33',
-          800: '#264f44',
-          700: '#306458',
-          600: '#3d7d6b',
-          500: '#4e9983',
-          400: '#63bba0',
-          300: '#84d5b9',
-          200: '#a8e9cf',
-          100: '#d3f8ea',
+        trust: {
+          50:  '#e0f7f7',
+          100: '#b3e3e3',
+          200: '#80cccc',
+          300: '#4db6b6',
+          400: '#269f9f',
+          500: '#0e8a8a',
+          600: '#087373',
+          700: '#065c5c',
+          800: '#044a4a',  // Main Color
+          900: '#033333',
         }
       },
       fontFamily: {
         opensans: ['"Open Sans"', 'sans-serif'],
+        cinzel: ['Cinzel', 'serif'],
       }
     }
   }
