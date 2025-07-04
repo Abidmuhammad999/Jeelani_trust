@@ -247,29 +247,28 @@
 
     </div>
   </div>
+<!-- Islamic Photo Modal Carousel -->
 <div id="specialPhotoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-  <!-- Container that adapts to image aspect ratio -->
-  <div class="relative" style="width: min(95vw, calc(90vh * 0.8)); height: min(90vh, calc(95vw * 1.25))">
-    
-    <!-- Curved Close Button -->
+  <!-- Responsive Box with fixed aspect ratio -->
+  <div class="relative w-full max-w-[95vw] sm:max-w-[500px] lg:max-w-[400px] aspect-[4/5] bg-transparent">
+
+    <!-- Close Button (NO BG!) -->
     <button onclick="closeSpecialPhotoModal()" 
-            class="absolute top-3 right-3 z-50 w-8 h-8 flex items-center justify-center 
-                   rounded-full  text-white hover:text-yellow-400 
-                    transition-all text-xl font-bold">
+            class="absolute top-2 right-2 z-50 text-white text-3xl font-bold hover:text-yellow-400 transition-all">
       &times;
     </button>
 
-    <!-- Carousel with Perfectly Fitted Images -->
-    <div class="h-full w-full overflow-hidden rounded-4xl">
-      <div id="carouselSlides" class="flex h-full w-full transition-transform duration-500 ease-in-out">
-        <img src="isw/sw-1-7.jpg" class="h-full w-full flex-shrink-0 object-contain rounded-xl" />
-        <img src="isw/sw-2-7.jpg" class="h-full w-full flex-shrink-0 object-contain rounded-2xl" />
-        <img src="isw/sw-3-7.jpg" class="h-full w-full flex-shrink-0 object-contain rounded-2xl" />
+    <!-- Carousel Area -->
+    <div class="w-full h-full overflow-hidden rounded-xl border border-white/20 backdrop-blur-xl bg-white/10">
+      <div id="carouselSlides" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+        <img src="isw/sw-1-7.jpg" class="w-full h-full object-contain flex-shrink-0" />
+        <img src="isw/sw-2-7.jpg" class="w-full h-full object-contain flex-shrink-0" />
+        <img src="isw/sw-3-7.jpg" class="w-full h-full object-contain flex-shrink-0" />
       </div>
     </div>
-
   </div>
 </div>
+
 
   <section id="leadership-portraits"
     class="w-full h-[calc(100vh-132px)] flex flex-col lg:flex-row bg-white overflow-hidden">
