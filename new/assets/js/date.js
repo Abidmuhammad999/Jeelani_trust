@@ -7,5 +7,5 @@ if (gregorianDate) {
   const Gmonth = today.toLocaleDateString('en-IN', { month: 'long' });
   const Gyear = today.getFullYear();
 
-  gregorianDate.innerHTML = `${Gday} <span class="text-[#138d75]">${Gmonth}</span> ${Gyear}`;
+  gregorianDate.innerHTML = `${Gday} <span class="text-trust-600"  style="  font-family:'Roboto Condensed', sans-serif;">${Gmonth}</span> ${Gyear}`;
 }
