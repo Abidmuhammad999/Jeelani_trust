@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <title>Naeb-QuthuBuzzaman | Jeelani Trust</title>
+     <script>
+          fetch("meta.html")
+               .then(res => res.text())
+               .then(data => document.head.insertAdjacentHTML("afterbegin", data));
+     </script>
+     <title>Home | Jeelani Trust</title>
+     <link rel="icon" type="image/png" class="bg-white" href="assets/img/LOGO-ico.png">
+     <link rel="stylesheet" href="style.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+     <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display&display=swap"
+          rel="stylesheet">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+     <script src="tailwind.config.js"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+     <!-- Navbar -->
+     <nav
+          class="bg-white text-[index.html#044a4a] shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
+          <div class="max-w-full ">
+               <div
+                    class="flex items-center justify-between h-[72px] px-[10px] relative shadow-[0_2px_18px_0_rgba(129,162,182,0.2)] bg-white">
+
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-1 group">
+                         <img src="assets/img/LOGO.png" alt="Jeelani Trust Logo" class="h-16 w-auto">
+                         <a href="index.html" class="font-bold text-2xl tracking-tight font-cinzel sm:text-lg">Jeelani
+                              Trust</a>
+                    </div>
+
+
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex space-x-1">
+                         <a href="index.html#"
+                              class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+                              <span
+                                   class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Home</span>
+                         </a>
+                         <a href="index.html#about"
+                              class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+                              <span
+                                   class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">About
+                                   Us</span>
+                         </a>
+                         <a href="index.html#programs"
+                              class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+                              <span
+                                   class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Programs</span>
+                         </a>
+                         <a href="index.html#gallery"
+                              class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+                              <span
+                                   class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Gallery</span>
+                         </a>
+                         <a href="index.html#contact"
+                              class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+                              <span
+                                   class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Contact</span>
+                         </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button
+                         class="md:hidden text-trust-700 focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+                         aria-label="Toggle mobile menu" id="menu-toggle">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                              stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                   d="M4 6h16M4 12h16M4 18h16" />
+                         </svg>
+                    </button>
+               </div>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" data-aos="fade-down" data-aos-duration="1000"
+               class="md:hidden hidden fixed inset-0 bg-trust-900  bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-trust-100">
+               <div class="flex flex-col space-y-4">
+                    <a href="index.html#home"
+                         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Home</a>
+                    <a href="index.html#about"
+                         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">About
+                         Us</a>
+                    <a href="index.html#programs"
+                         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Programs</a>
+                    <a href="index.html#gallery"
+                         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Gallery</a>
+                    <a href="index.html#contact"
+                         class="mobile-nav-link block text-xl py-3 px-4 rounded-lg font-medium hover:bg-white hover:bg-opacity-5 hover:text-gold transition-all">Contact</a>
+               </div>
+
+               <button
+                    class="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+                    aria-label="Close menu" id="menu-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                              d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+               </button>
+          </div>
+     </nav>
+
+  <section class="max-w-full mx-auto px-4 py-20 mt-32 " data-aos="fade-up" data-aos-duration="1000">
+          <!-- Image -->
+          <img src="assets/img/Mahan2.jpg" alt="Inspirational" class="mx-auto mb-6 rounded-xl shadow-lg max-h-[300px] w-auto">
+
+          <!-- Quote -->
+          <blockquote class="text-lg text-trust-700 mb-4 italic font-serif justify-around">
+              "What we need to do is to regain the original purity of our hearts and become truly human. Only then can we die happily as humans with clarity. What I am showing you is the way up there. Quthbuzzaman has shown us the path to elevate those who approach with the sincere intention, by nurturing the divine qualities within, and lead them to the lofty state of being God's most excellent creation. That is what I continue to do. It is the method of spiritual purification that will continue until the Day of Judgment. Quthbuzzaman taught us to look at the heart of a person, regardless of caste or creed. It is when one attains that blessed state of mind that one achieves complete success in life. That is what I guarantee."
+
+
+          </blockquote>
+        <p class="mt-4 text-xl text-trust-800 font-cinzel text-end">—  Nāeb Quthbuzzāman Dr. Sheikh Nizamudhin Sulthan Shāh Qādiri Chishti</p>
+
+
+          <!-- Paragraph -->
+          <p class="text-base text-trust-600 leading-relaxed font-poppins mt-6">
+               At Jeelani Trust, we believe in empowering communities through compassionate service and sincere dedication.
+               Our programs are designed to uplift the underprivileged and provide lasting change with love and integrity.
+          </p>
+     </section>
+
+
+     <script src="assets/js/main.js"></script>
+     <script src="assets/js/swalath.js"></script>
+     <script src="assets/js/day-remainder-arabic.js"></script>
+     <script src="assets/js/menu.js"></script>
+     <script src="assets/js/date.js"></script>
+     <script src="assets/js/scrollspy.js"></script>
+     <!-- <script src="assets/js/special-redirect.js"></script> -->
+     <script src="assets/js/gallery-modal.js"></script>
+     <script src="assets/js/form-submission.js"></script>
+     <script src="assets/js/arabic-date-api.js"></script>
+     <script src="assets/js/add.js"></script>
+     <script src="assets/js/tailwind.config.js"></script>
+</body>
+
+</html>
