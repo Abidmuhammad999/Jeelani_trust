@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Slide Parallax + Next Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll area to activate animations */
+    .scroll-area {
+      height: 200vh;
+    }
+
+    /* Fixed container for 3D panels */
+    .container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      perspective: 1000px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .panel {
+      width: 50vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      backface-visibility: hidden;
+      z-index: 5;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateZ(-300px);
+      color: #fff;
+      font-size: 2rem;
+      text-align: center;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    /* Next Page Section */
+    .next-page {
+      height: 100vh;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      padding: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    .next-page a {
+      color: #0ff;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-decoration: underline;
+      z-index: 1;
+    }
+    .crop-left, .crop-right {
+  object-fit: none;
+  width: 200%;
+  height: 100%;
+}
+
+.crop-left {
+  object-position: left center;
+}
+
+.crop-right {
+  object-position: right center;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Scroll filler -->
+  <div class="scroll-area"></div>
+
+  <!-- Fixed 3D panels -->
+  <div class="container">
+<div class="panel left">
+  <img class="side-img left-img" src="row-1-column-1.jpg" alt="Left Side">
+  <div class="text">bcd<br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia ab architecto voluptatibus qui unde! Est quam sit nulla. Eum totam sed minus ducimus? Ut hic facilis aliquid dignissimos voluptatum illum.</div>
+</div>
+<div class="panel right">
+  <img class="side-img right-img" src="row-1-column-2.jpg" alt="Right Side">
+  <div class="text">abc<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit possimus, recusandae distinctio dolorum error exercitationem veniam iure modi reprehenderit, cumque unde similique, porro voluptatum non commodi facere nostrum. Distinctio, voluptas.</div>
+</div>
+
+
+  </div>
+
+  <!-- Second Page Content -->
+  <section class="next-page">
+    <h1>✨ Welcome to the Next Page!</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam facilis incidunt culpa nemo eveniet ex voluptatum! Consequatur omnis magnam aut inventore. Expedita doloribus id iure voluptatum, fuga eos maiores. Temporibus!
+    Necessitatibus itaque magnam modi voluptas animi doloribus pariatur veniam, repellendus illo debitis rerum, ullam odit sunt harum quod sapiente amet, numquam assumenda? Itaque accusamus facere eos voluptates quia. Modi, accusantium.
+    Placeat eaque harum aspernatur et, earum beatae reiciendis possimus praesentium, porro exercitationem, minima fugiat totam neque? Commodi repellendus illum ad reiciendis repellat corporis placeat, dignissimos fugit. Natus deserunt similique accusantium.
+    Quo iste hic, in illum quaerat earum minus, aliquam quia doloribus sit esse magnam recusandae provident voluptate doloremque perspiciatis rerum minima! Accusamus alias molestiae, itaque vero earum corrupti quas voluptate.
+    In, quisquam voluptatum pariatur sequi eius ex possimus tempore doloremque laboriosam dignissimos aut reprehenderit natus. Accusamus voluptatum tempore, culpa et deleniti provident sit ad, inventore sunt numquam ut veritatis quas.
+    Nam, accusantium. Illum esse quisquam perferendis reiciendis nihil, tempora ipsa sed natus aperiam cumque. Dignissimos aliquam fugit saepe ipsum, veniam nesciunt rem, incidunt repellendus qui dicta ducimus, non expedita deserunt.
+    Voluptas quam voluptatibus, nostrum, quasi quaerat quae delectus ducimus, consectetur repudiandae dicta modi aspernatur exercitationem voluptatem consequuntur fuga culpa repellat id placeat nisi facilis adipisci optio quo deleniti! Sunt, nam.
+    Dolores placeat iste ducimus dolorum neque at labore eveniet. Alias corporis, illum quaerat, explicabo, aspernatur eos pariatur quidem temporibus ipsam iste perspiciatis. Nisi ut repellendus quis laudantium nobis qui et.
+    Eum, quibusdam consequuntur vero cumque natus ipsam fuga! Praesentium hic laborum accusantium amet, corrupti harum, quibusdam vitae recusandae enim esse voluptas, nesciunt culpa ex dolore unde commodi doloremque quia porro.
+    Pariatur quibusdam possimus harum unde fugit similique a. Eveniet quas mollitia eos expedita consectetur aut suscipit ab dicta ipsum cum possimus, quaerat libero culpa, optio sed nobis natus delectus quam.
+    Nam dolores magnam natus vel tenetur laborum, debitis iusto quis praesentium, explicabo eaque fugiat ullam labore quas odio doloribus pariatur ea? Architecto est in magni fugiat assumenda tenetur similique error.
+    Optio non sapiente exercitationem, aut aspernatur totam libero! Maxime, quaerat hic porro nemo cupiditate error officia mollitia excepturi dolorem fuga! Nostrum, doloribus dolore nesciunt ad fugiat alias rerum tempora numquam?
+    Est laboriosam aperiam provident et eligendi sit atque, ad culpa quae porro magnam vitae harum ea. Blanditiis dolor, nulla suscipit, similique vel minus tempora eveniet veniam itaque obcaecati, saepe asperiores.
+    Adipisci laudantium optio quam earum laborum obcaecati rem nesciunt et voluptate magni ullam pariatur odio deserunt possimus sunt voluptas, accusantium dolorem sequi? Laudantium atque natus incidunt harum numquam accusamus odio.
+    Incidunt error vero modi natus reprehenderit officiis. Voluptatibus quod repudiandae quia natus illum nesciunt consectetur magnam dolorum laborum veritatis esse, quidem hic porro excepturi. Nemo ut distinctio soluta iure tenetur.</p>
+    <a href="#top">⬆️ Back to Top</a>
+  </section>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate left image
+    gsap.to(".left img", {
+      x: "-100%",
+      rotateY: -30,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".scroll-area",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Animate right image
+    gsap.to(".right img", {
+      x: "100%",
+      rotateY: 30,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".scroll-area",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Fade in text
+    gsap.to(".text", {
+      opacity: 1,
+      duration: 3,
+      scrollTrigger: {
+        trigger: ".scroll-area",
+        start: "top center",
+        end: "bottom center",
+        scrub: true
+      }
+    });
+    gsap.to(".container", {
+  autoAlpha: 0, // fades out and sets pointer-events: none
+  scrollTrigger: {
+    trigger: ".scroll-area",
+    start: "bottom bottom",
+    end: "bottom+=100 top",
+    toggleActions: "play none none reverse"
+  }
+});
+  </script>
+</body>
+</html>
