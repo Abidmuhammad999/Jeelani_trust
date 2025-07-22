@@ -24,7 +24,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <script src="tailwind.config.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel="stylesheet">
@@ -123,8 +128,7 @@
 <body class="bg-gray-50 font-opensans">
 
   <!-- Navbar -->
-  <nav
-    class="bg-white shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
+  <nav class="bg-white shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
     <div class="max-w-full ">
       <div
         class="flex items-center justify-between h-[72px] px-[10px] relative shadow-[0_2px_18px_0_rgba(129,162,182,0.2)] bg-white">
@@ -178,39 +182,39 @@
     </div>
 
     <!-- Mobile Menu -->
-<!-- Mobile Menu -->
-<div id="mobile-menu"
-  class="fixed inset-0 bg-trust-900 bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-white
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-trust-900 bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-white
          transform translate-x-full opacity-0 pointer-events-none
          transition-all duration-3500 ease-in-out md:hidden">
-  <div class="flex flex-col space-y-4">
-    <a href="#home" class="text-xl py-3 px-4 hover:text-gold transition-all">Home</a>
-    <a href="#about" class="text-xl py-3 px-4 hover:text-gold transition-all">About</a>
-    <a href="#programs" class="text-xl py-3 px-4 hover:text-gold transition-all">Initiatives</a>
-    <a href="#gallery" class="text-xl py-3 px-4 hover:text-gold transition-all">Gallery</a>
-    <a href="#contact" class="text-xl py-3 px-4 hover:text-gold transition-all">Contact</a>
-  </div>
+      <div class="flex flex-col space-y-4">
+        <a href="#home" class="text-xl py-3 px-4 hover:text-gold transition-all">Home</a>
+        <a href="#about" class="text-xl py-3 px-4 hover:text-gold transition-all">About</a>
+        <a href="#programs" class="text-xl py-3 px-4 hover:text-gold transition-all">Initiatives</a>
+        <a href="#gallery" class="text-xl py-3 px-4 hover:text-gold transition-all">Gallery</a>
+        <a href="#contact" class="text-xl py-3 px-4 hover:text-gold transition-all">Contact</a>
+      </div>
 
-  <!-- Close Button -->
-  <button id="menu-close" class="absolute top-6 right-6 text-white hover:bg-white hover:bg-opacity-10 p-2 rounded-full">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
-</div>
+      <!-- Close Button -->
+      <button id="menu-close"
+        class="absolute top-6 right-6 text-white hover:bg-white hover:bg-opacity-10 p-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
 
 
   </nav>
 
 
 
-  <div id="home" class="w-full text-trust-800 font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]" style="  font-family:'Roboto Condensed', sans-serif;">
+  <div id="home" class="w-full text-trust-800 font-bold bg-[#f7fef9] shadow-md mt-[72px] h-[60px]"
+    style="  font-family:'Roboto Condensed', sans-serif;">
     <div
       class="max-w-full px-3  md:px-10 h-full flex items-center justify-between md:justify-end gap-2 md:gap-6 text-base sm:text-lg md:text-xl">
 
       <!-- 📅 Gregorian Date -->
-      <div id="gregorian-date"
-        class="font-[Playfair Display] tracking-wide text-left md:text-right whitespace-nowrap">
+      <div id="gregorian-date" class="font-[Playfair Display] tracking-wide text-left md:text-right whitespace-nowrap">
         <span>30 June 2025</span>
       </div>
 
@@ -323,7 +327,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 data-aos="fade-up" data-aos-duration="1000"
-          class="text-3xl md:text-4xl font-bold heading-font mb-6 text-trust-900">About <span class="text-trust-600 ">
+          class="text-4xl md:text-6xl  font-[cormorant] mb-6 text-trust-900 ">About <span class="text-trust-600 ">
             Jeelani Trust</span></h2>
         <!-- <div class="w-24 h-1 bg-emerald-500 mx-auto"></div> -->
       </div>
@@ -336,33 +340,147 @@
             alt="Our Team" class="rounded-lg shadow-md w-full h-64 object-cover">
         </div>
         <div class="md:col-span-2">
-          <div class="space-y-8">
+          <div class="space-y-8 font-[quicksand]">
             <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold  mb-3 text-trust-800">Who We Are</h4>
-              <p class=" leading-relaxed font-opensans">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A eligendi cumque saepe cum reiciendis,
-                accusamus consequuntur, est quae dolore nulla sapiente corrupti at consectetur aperiam vitae quas
-                perspiciatis sit iure.
+              <h4 class="text-2xl font-[cormorant]  mb-3 text-trust-800  font-semibold">Who We Are</h4>
+              <p class="space-y-8 font-quicksand">
+                Jeelani Trust is a public charitable organization dedicated to foster positive change where piety meets
+                humanity, leading pious, productive, and progressive initiatives in Kerala-India and outside. We
+                champion Sufi piety, educational advancement, and social welfare, serving as a vital platform for moral
+                guidance and impactful initiatives in health, humanitarian aid, and socio-religious reform. Functioning
+                as an inclusive public venture, Jeelani Trust actively promotes Sufi path of excellence, fosters
+                educational progress, advocates for social welfare, and offers moral guidance to empower society as a
+                whole.
+
+
+              </p>
+              <p class=" leading-relaxed font-quicksand pt-4">
+                More than just an organization, Jeelani Trust is a comprehensive public platform, illuminating the path
+                through the propagation of Sufi piety, the unwavering promotion of education and social well-being, and
+                the dedicated practice of moral guidance and human development for the global humanity. With a profound
+                vision of ethics and welfare, the services of Jeelani Trust reach out to the needy people in society at
+                large, beyond the distinctions of community, culture or caste. The key objectives of the Trust are to
+                promote world peace, moral progress and communal harmony.
+
+
+              </p>
+              <p class=" leading-relaxed font-quicksand pt-4">
+
+
+                Taking forward the selfless and soulful mission laid out by the astute founder, Quthbuzzaman Dr. Shaikh
+                Yousuf Sulthan Shah Qadiri Chishti, the current chairman and successor, Naeb Quthbuzzaman Dr. Shaikh
+                Nizamudhin Sulthan Shah Qadiri Chishti, meticulously ensures significant progress, mobilizing wider
+                public to the virtuous path of welfare and progress, realized through <em
+                  class="font-semibold  text-trust-900">Jeelani Shareef</em> and developed under <em
+                  class="font-semibold  text-trust-900">Jeelani Charitable Trust </em> (reg. no. 0569/04/2006).
               </p>
             </div>
             <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold  mb-3 text-trust-800">Our Vision</h4>
+              <h4 class="text-xl font-semibold font-[cormorant] mb-3 text-trust-800">Our Vision</h4>
 
-              <p class=" leading-relaxed font-opensans">
-                We envision a society where every individual has access to quality education, healthcare, and
-                opportunities for growth, regardless of their socio-economic background. Our goal is to create
-                self-sustaining communities that can thrive independently.
+              <p class=" leading-relaxed font-quicksand">
+                Ethically mending and progressively transforming the current human condition, the practical moral
+                guidance and dedicated social services spearheaded by Jeelani Trust are meticulously designed to
+                actualize the profound vision of humanity's unity, ushering in an era of world peace, justice, and
+                harmony.
+
+              </p>
+              <p class=" leading-relaxed font-quicksand pt-4">
+
+
+                The Trust envisions a world where every individual lives with moral integrity, social dignity, wholistic
+                health, and access to knowledge, empowered to achieve their full spiritual and human potential.
+
+              </p>
+              <p class=" leading-relaxed font-quicksand pt-4">
+
+                Championing the Sufi path of moral empowerment, guided by the teachings of Holy Prophet Muhammad (peace
+                and blessings be upon him), strengthened by the spirit of Imam Ali (k.w.) and upheld by the great Sufi
+                Shaikh ‘Muhyiddin’ Abdul Qadir al-Jeelani’s spiritual order, Jeelani Public Charitable Trust is actively
+                striving to realize a just and peaceful global society where compassion, understanding, and equitable
+                opportunities universally flourish.
+
               </p>
             </div>
 
             <div data-aos="fade-up" data-aos-duration="1500">
-              <h4 class="text-xl font-semibold text-trust-800 mb-3">Our Approach</h4>
-              <p class=" leading-relaxed font-opensans">
-                We believe in holistic development through community participation. Our programs are designed with
-                long-term impact in mind, focusing on education, women's empowerment, healthcare access, and skill
-                development. We partner with local communities to ensure our initiatives are culturally appropriate and
-                sustainable.
+              <h4 class="text-xl font-semibold font-[cormorant] mb-3 text-trust-800">Our Mission</h4>
+              <p class=" leading-relaxed font-quicksand">
+                Under the steadfast leadership of its Chairman, His Holiness Naeb Quthbuzzaman Dr. Sheikh Nizamudhin
+                Sulthan Shah Qadiri Chishti, Jeelani Trust carries forward the foundational objectives set by the
+                revered Sufi Guru, His Holiness Quthbuzzaman Dr. Sheikh Yousuf Sulthan Shah Qadiri Chishti. Continuing
+                the profound legacy of its founder, the current leadership firmly advances the noble mission of Jeelani
+                Trust, expanding its vital work of promoting Sufi perfection of human life, sponsoring developments in
+                education and health, helping the poor and needy, and spreading peace and harmony in society. Based at
+                Jeelani Shareef in Kerala, the Trust's core commitment remains to serve society and nurturing a morally
+                robust humanity.
+
               </p>
+              <p class=" leading-relaxed font-quicksand pt-4">
+
+
+                Upholding our wider vision and addressing the pressing needs of the time, Jeelani Trust keeps devising
+                effective plans and projects, and systematically carries them out on regular basis. The Trust conducts
+                programmes and runs institutions for promoting holistic well-being, expanding educational development,
+                healthcare initiatives, and humanitarian aid, grounded in the principles of Sufi piety and
+                socio-religious reformation, for the benefit of the deserving and under-served communities within the
+                region and around the world.
+
+
+              </p>
+              <p class="leading-relaxed font-quicksand pt-4">
+                Jeelani Trust is keen on advancing its activities and initiatives in various fields, including (but not
+                limited to):
+              </p>
+
+              <ul class="list-disc list-inside leading-relaxed font-quicksand pt-2">
+                <li>
+                  Promoting human development through Sufi moral values and practices, propagating the traditional
+                  Qadiri – Chishti Sufi path among all sections of society, providing spiritual guidance,
+                  classes and conventions, enabling people for ethical life, and ensuring peace in life and hereafter.
+                </li>
+                <li>
+                  Keeping access open for all to the global Sufi centre of peace and spiritual blessings,
+                  Quthbuzzaman Jeelani Shareef, providing guidance in Prophetic teachings for the ideal humanity.
+                </li>
+                <li> Encouraging and sponsoring the integration of Islamic and liberal education, and in-depth research
+                  and practice in Sufism; Promoting cutting edge studies in science and technology, (especially in ICT),
+                  with ethical guidance and moral values – ‘Nizamia Institute’ being a comprehensive example,</li>
+                <li> Establish educational institutions and excellence centres – colleges and institutes for studies in
+                  STEM, Liberal Arts, and Religious Studies; run orphanages, high schools, educational & vocational
+                  training centers, institutes for ICT, etc. for the educational advancement, not only of the Muslim
+                  religious minority, but for the society at large,</li>
+                <li>   	Establish and maintain Mosques, Sufi research centre, special centres for traditional Islamic & Arabic studies, offline and online Madrasas – from preschool to higher secondary – Jeelani Mosque, Nizamia Institute, Nizamia Madrasa, etc. are among many functional models, 
+                <li> Develop Libraries & Research Institutes, special centres for advanced studies and career guidance,
+                  coaching institutes for competitive exams supportive especially of the weaker social section -
+                  Quthbuzzaman Global Sufi Research Centre, Gurukulam Nizamia, Nizamia Centre for Excellence, to name a
+                  few ventures in this connection, </li>
+                <li> Providing free education, off-line and online, at pre-school, primary, secondary, intermediate,
+                  undergraduate and postgraduate levels, enabling students for the future of advancements, and grounding
+                  them in moral vision – the multi-layered educational platforms of ‘Nizamia’ stand to fulfill this
+                  mission, </li>
+                <li> Ensuring wholistic empowerment of social and religious minorities and weaker sections through
+                  healthcare, education, and employment; providing philanthropic aid and setting up enabling measures,
+                </li>
+                <li> Public championing of religious harmony, and campaigning against terrorism and communalism,
+                  conducting conferences and mass-rallies to promote peace and harmony, </li>
+                <li> Encouraging inter-faith dialogue and propagating pluralist unity in society, </li>
+                <li> Educating the youth in ethical lifestyle and moral leadership, with entrepreneurial success for
+                  social care; building awareness against drug and anti-social elements,</li>
+                <li> Educating the youth in ethical lifestyle and moral leadership, with entrepreneurial success for
+                  social care; building awareness against drug and anti-social elements,</li>
+                <li> Establishing Hospitals, conducting medical camps and awareness programmes, providing healthcare
+                  amenities, catering to the health and well-being of the society in general, and poor and minorities in
+                  particular – Thaqdees Hospital, run by the Chairman of the Trust, stands as an outstanding initiative
+                  serving the society in the field of health and care, </li>
+                <li> Aiding public schools and offices for renovations; and supporting developments in infrastructure
+                  and public utility services, </li>
+                <li> Massively endorsing environmental care and sustenance of nature, etc., by conducting awareness
+                  programmes and seminars, supporting heritage-conservatory and eco-friendly projects, and leading a
+                  plant-a-tree drive on the World Environment Day, etc.</li>
+              </ul>
+
+
             </div>
           </div>
         </div>
@@ -452,6 +570,31 @@
 
         <!-- Card 3 -->
         <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
+          data-aos-duration="1500" data-aos-delay="400">
+          <div class="relative">
+            <img src="assets/img/gaosiyya.jpg" alt="Program" class="w-full h-64 object-cover">
+            <div class="absolute bottom-0 left-0 p-3">
+              <!-- <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span> -->
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-green-900">Ghausiyya Sunni Jam’iyyathul Ulama</h3>
+            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
+              illo!</p>
+            <div class="flex justify-between items-center pt-2">
+              <a href="#"
+                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
+                Learn More
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
           data-aos-duration="1500" data-aos-delay="200">
           <div class="relative">
             <img src="assets/img/institute07.jpg" alt="Program" class="w-full h-64 object-cover">
@@ -460,7 +603,7 @@
             </div>
           </div>
           <div class="p-5 space-y-3">
-            <h3 class="text-lg font-semibold text-green-900">Nizamia Institute</h3>
+            <h3 class="text-lg font-semibold text-green-900">Nizamia Institute for Islamic Studies and Liberal Arts</h3>
             <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
               illo!</p>
             <div class="flex justify-between items-center pt-2">
@@ -476,7 +619,7 @@
           </div>
         </div>
 
-        <!-- Card 4 -->
+        <!-- Card 5 -->
         <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
           data-aos-duration="1500" data-aos-delay="300">
           <div class="relative rounded-lg">
@@ -502,31 +645,7 @@
           </div>
         </div>
 
-        <!-- Card 5 -->
-        <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
-          data-aos-duration="1500" data-aos-delay="400">
-          <div class="relative">
-            <img src="assets/img/gaosiyya.jpg" alt="Program" class="w-full h-64 object-cover">
-            <div class="absolute bottom-0 left-0 p-3">
-              <!-- <span class="bg-green-300 text-green-900 px-3 py-1 text-xs font-medium rounded-full">lorem</span> -->
-            </div>
-          </div>
-          <div class="p-5 space-y-3">
-            <h3 class="text-lg font-semibold text-green-900">Gousiyya Sunni Jameyyathul Ulama</h3>
-            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
-              illo!</p>
-            <div class="flex justify-between items-center pt-2">
-              <a href="#"
-                class="text-sm text-green-800 font-medium inline-flex items-center hover:text-green-600 transition group">
-                Learn More
-                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+
 
         <!-- Card 6 -->
         <div class="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all" data-aos="fade-up"
@@ -538,7 +657,7 @@
             </div>
           </div>
           <div class="p-5 space-y-3">
-            <h3 class="text-lg font-semibold text-green-900">Sathya Sandesham Magazine</h3>
+            <h3 class="text-lg font-semibold text-green-900">Sathyasandesham Monthly</h3>
             <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
               illo!</p>
             <div class="flex justify-between items-center pt-2">
@@ -564,7 +683,7 @@
             </div>
           </div>
           <div class="p-5 space-y-3">
-            <h3 class="text-lg font-semibold text-green-900">Initiative Seven</h3>
+            <h3 class="text-lg font-semibold text-green-900">Sufi Guidance and Spiritual Path – ‘Tariqah’</h3>
             <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
               illo!</p>
             <div class="flex justify-between items-center pt-2">
@@ -590,7 +709,7 @@
             </div>
           </div>
           <div class="p-5 space-y-3">
-            <h3 class="text-lg font-semibold text-green-900">Initiative Eight</h3>
+            <h3 class="text-lg font-semibold text-green-900">Jeelani Public Charity Services</h3>
             <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, dolor
               illo!</p>
             <div class="flex justify-between items-center pt-2">
@@ -822,7 +941,7 @@
                 <div>
                   <h4 class="font-bold text-trust-800 mb-1">Office Hours</h4>
                   <p class="">8:00 AM - 5:00 PM</p>
-                 
+
                 </div>
               </div>
             </div>
@@ -845,14 +964,13 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <div class="flex items-center space-x-3 mb-4">
-           <img src="assets/img/LOGO - w withot.png" class="h-10 w-auto" alt="Jeelani Trust Logo">
+            <img src="assets/img/LOGO - w withot.png" class="h-10 w-auto" alt="Jeelani Trust Logo">
             <span class="font-bold text-2xl text-white font-cinzel">Jeelani Trust</span>
           </div>
           <p class=" text-sm mb-4">Committed to creating positive change through sustainable community
             development programs.</p>
           <div class="flex space-x-4">
-            <a href="https://x.com/jeelanitrust" class=" hover:text-light-green"
-              aria-label="Follow us on X">
+            <a href="https://x.com/jeelanitrust" class=" hover:text-light-green" aria-label="Follow us on X">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zM16.845 20.31h2.045L7.747 3.69H5.629l11.216 16.62z" />
@@ -894,14 +1012,14 @@
           </ul>
         </div>
         <div>
-        <h4 class="font-medium text-lg mb-4 text-trust-800">FGGF</h4>
+          <h4 class="font-medium text-lg mb-4 text-trust-800">FGGF</h4>
           <ul class="space-y-3">
             <li><a href="#one" class=" hover:text-white transition-colors">GFGFFG5</a></li>
             <li><a href="#two" class=" hover:text-white transition-colors">6FGFGFG</a></li>
             <li><a href="#three" class=" hover:text-white transition-colors">7FGFGFG</a></li>
             <li><a href="#four" class=" hover:text-white transition-colors">8FGFGFG</a></li>
           </ul>
-      </div>
+        </div>
       </div>
       <hr class="mt-8">
       <div class=" mt-2 pt-6 text-center text-white text-sm">

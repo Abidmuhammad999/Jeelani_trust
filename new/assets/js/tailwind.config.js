@@ -18,7 +18,9 @@ tailwind.config = {
       },
       fontFamily: {
         opensans: ['"Open Sans"', 'sans-serif'],
+        Quicksand: ['"Quicksand"', 'sans-serif'],
         cinzel: ['Cinzel', 'serif'],
+        Cormorant: ['Cormorant Garamond', 'serif'],
       }
     }
   }
