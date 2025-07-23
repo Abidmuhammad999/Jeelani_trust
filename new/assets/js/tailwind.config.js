@@ -17,10 +17,10 @@ tailwind.config = {
         }
       },
       fontFamily: {
-        opensans: ['"Open Sans"', 'sans-serif'],
-        Quicksand: ['"Quicksand"', 'sans-serif'],
+        opensans: ['Open Sans', 'sans-serif'],
+        quicksand: ['Quicksand', 'sans-serif'],
         cinzel: ['Cinzel', 'serif'],
-        Cormorant: ['Cormorant Garamond', 'serif'],
+        cormorant: ['Cormorant Garamond', 'serif'],
       }
     }
   }

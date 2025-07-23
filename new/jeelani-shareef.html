@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeelani Shareef | Jeelani Trust</title>
+  <script>
+    fetch("meta.html")
+      .then(res => res.text())
+      .then(data => document.head.insertAdjacentHTML("afterbegin", data));
+  </script>
+
+  <link rel="icon" type="image/png" class="bg-white" href="assets/img/LOGO-ico.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+  <script src="tailwind.config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="bg-white  shadow-sm border-b border-white border-opacity-10 fixed top-0 left-0 w-full z-50 mb-5">
+    <div class="max-w-full ">
+      <div
+        class="flex items-center justify-between h-[72px] px-[10px] relative shadow-[0_2px_18px_0_rgba(129,162,182,0.2)] bg-white">
+
+        <!-- Logo -->
+        <div class="flex items-center space-x-1 group">
+          <img src="assets/img/LOGO.png" alt="Jeelani Trust Logo" class="h-12 w-auto">
+          <a href="index.html" class="font-bold text-2xl tracking-tight font-cinzel sm:text-md">Jeelani Trust</a>
+        </div>
+
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-1">
+          <a href="index.html#"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Home</span>
+          </a>
+          <a href="index.html#about"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">About
+              Us</span>
+          </a>
+          <a href="index.html#programs"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Initiatives</span>
+          </a>
+          <a href="index.html#gallery"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Gallery</span>
+          </a>
+          <a href="index.html#contact"
+            class="nav-link px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-all duration-200 flex items-center">
+            <span
+              class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gold after:w-0 hover:after:w-full after:transition-all after:duration-300">Contact</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-trust-700 focus:outline-none p-2 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors"
+          aria-label="Toggle mobile menu" id="menu-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-trust-900 bg-opacity-95 backdrop-blur-sm z-50 pt-24 px-6 text-white
+         transform translate-x-full opacity-0 pointer-events-none
+         transition-all duration-3500 ease-in-out md:hidden">
+      <div class="flex flex-col space-y-4">
+        <a href="index.html#home" class="text-xl py-3 px-4 hover:text-gold transition-all">Home</a>
+        <a href="index.html#about" class="text-xl py-3 px-4 hover:text-gold transition-all">About</a>
+        <a href="index.html#programs" class="text-xl py-3 px-4 hover:text-gold transition-all">Initiatives</a>
+        <a href="index.html#gallery" class="text-xl py-3 px-4 hover:text-gold transition-all">Gallery</a>
+        <a href="index.html#contact" class="text-xl py-3 px-4 hover:text-gold transition-all">Contact</a>
+      </div>
+
+      <!-- Close Button -->
+      <button id="menu-close"
+        class="absolute top-6 right-6 text-white hover:bg-white hover:bg-opacity-10 p-2 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+      </nav>
+
+    <h2 class="text-3xl font-bold mt-24 text-center text-trust-700 mb-5 font-cormorant">JEELANI SHAREEF</h2>
+    <div class="max-w-6xl mx-auto px-4 font-quicksand text-justify leading-relaxed text-trust-600">
+
+      <p class=" mb-4">
+        Jeelani Shareef, also known as Quthbuzzaman Jeelani Shareef, is a global centre of peace, Sufi guidance and
+        universal harmony, working as the Head Quarters of Jeelani Trust and the functioning locus of various major
+      initiatives under the Trust. As a Sufi spiritual sanctuary for the disciples and a welcoming haven of peace for
+      the seekers from all religious traditions, Jeelani Shareef was founded by renowned Sufi Guru Hazrat Quthbuzzaman
+      Dr. Sheikh Yousuf Sulthan Shah Qadiri Chishti, in 2006 (1426 AH). Throughout the year, Jeelani Shareef attracts a
+      vibrant confluence of visitors from diverse cultural, religious, and national backgrounds. They come primarily to
+      meet with the sagacious Sufi master and spiritual guide, His Holiness Naeb Quthbuzzaman Dr. Sheikh Nizamudhin
+      Sulthan Shah Qadiri Chishti, the holy successor of Hazrat Quthbuzzaman and the ongoing Chairman of Jeelani Trust.
+    </p>
+    <p class="mb-4">
+      Within Jeelani Shareef lies the holy Maqam (dargah) of Sufi Hazrat Quthbuzzaman, a sacred spiritual space where a
+      daily ‘ziyarah’ (visitation) takes place every evening since January 25th, 2019 (19 Jumada al-Awwal 1440 AH).
+      Inaugurated 0n 16th August 2009 (25 Sha’ban 1430 AH), Jeelani Masjid functions as a prominent congregational
+      mosque in the region which hosts the monthly Swalath Majlis (Sufi congregation of ‘Peace & Blessings’), among
+      other spiritual gatherings, in Jeelani Shareef. Apart from the central office in the administrative block, the
+      bustling residential educational institution, Nizamia Institute for Islamic Studies and Liberal Arts, and the
+      editorial office of the Sufi monthly periodical, Santhyasandesham, are located within the serene compound of
+      Jeelani Shareef. The centre also functions as the Head Quarters to Ghausiyya Sunni Jam’iyyathul Ulama, the Sufi
+      council of Islamic scholars founded by Holy Sufi Quthbuzzaman, and the Jeelani Study Centre, the central organ of
+      da’wah (propagation) and social service under patronage of Holy Sufi Master Naeb Quthbuzzaman. </pc>
+
+    <p>
+      Stands as spiritual edifice of global significance, Quthbuzzaman Jeelani Shareef strives to foster peace and
+      harmony across the world. Recognized as an active centre of interfaith dialogue and a hub of Sufi education and
+      intellection, Jeelani Shareef keeps providing hope for brighter futures for a humanity with ethical clarity. The
+      charitable activities and social services carried out under Jeelani Trust are steered from Jeelani Shareef under
+      the benevolent guidance of the Chairman, Holy Naeb Quthbuzzamn Dr. Shaikh Nizamudhin Sulthan.
+    </p>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/swalath.js"></script>
+  <script src="assets/js/day-remainder-arabic.js"></script>
+  <script src="assets/js/menu.js"></script>
+  <script src="assets/js/date.js"></script>
+  <script src="assets/js/scrollspy.js"></script>
+  <!-- <script src="assets/js/special-redirect.js"></script> -->
+  <script src="assets/js/gallery-modal.js"></script>
+  <script src="assets/js/form-submission.js"></script>
+  <script src="assets/js/arabic-date-api.js"></script>
+  <script src="assets/js/add.js"></script>
+  <script src="assets/js/tailwind.config.js"></script>
+</body>
+
+</html>
